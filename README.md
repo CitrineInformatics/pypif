@@ -1,4 +1,4 @@
-# MIFkit
+# PIFkit
 
 ## About
 
@@ -20,4 +20,4 @@ $ python setup.py install
 
 # Use
 
-A detailed discussion of the MIF schema and usage are available at [http://citrine.io/pif](http://citrine.io/pif).
+A detailed discussion of the PIF schema and usage are available at [http://citrine.io/pif](http://citrine.io/pif).
