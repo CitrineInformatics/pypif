@@ -13,7 +13,7 @@ class Person(Pio):
 
         :param name: :class:`.Name` object for the person.
         :param email: String with the email address of the person.
-        :param orcid: String with the ORCID identifier of the person.
+        :param orcid: String with the `ORCID <a href="http://orcid.org">ORCID</a>`_ identifier of the person.
         :param kwargs: Dictionary of field names not supported.
         """
         super(Person, self).__init__(**kwargs)

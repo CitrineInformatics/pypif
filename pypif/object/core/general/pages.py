@@ -3,7 +3,7 @@ from pypif.object.core.general.pio import Pio
 
 class Pages(Pio):
     """
-    Start and end pages for a reference.
+    Representation of the starting and ending pages of a reference.
     """
 
     def __init__(self, start=None, end=None, **kwargs):

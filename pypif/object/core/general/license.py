@@ -3,7 +3,7 @@ from pypif.object.core.general.pio import Pio
 
 class License(Pio):
     """
-    Information about a license.
+    Information about a license that applies to some item.
     """
 
     def __init__(self, name=None, description=None, url=None, **kwargs):

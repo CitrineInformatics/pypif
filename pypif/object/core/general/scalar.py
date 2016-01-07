@@ -3,7 +3,7 @@ from pypif.object.core.general.pio import Pio
 
 class Scalar(Pio):
     """
-    Class to store information about a single scalar value that could represent an absolute point, an uncertain point,
+    Representation of a single scalar value that could represent an absolute point, an uncertain point,
     a range of values, a minimum, or a maximum.
     """
 

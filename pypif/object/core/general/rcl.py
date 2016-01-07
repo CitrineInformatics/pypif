@@ -9,60 +9,60 @@ class Rcl(Pio):
     Base class for any objects that contain reference, contact, and license information.
     """
 
-    def __init__(self, reference=None, contact=None, license=None, **kwargs):
+    def __init__(self, references=None, contacts=None, licenses=None, **kwargs):
         """
         Constructor.
 
-        :param reference: List of :class:`.Reference` objects where information about this item is published.
-        :param contact: List of :class:`.Person` objects with people that can be contacted for information about
+        :param references: List of :class:`.Reference` objects where information about this item is published.
+        :param contacts: List of :class:`.Person` objects with people that can be contacted for information about
         this item.
-        :param license: List of :class:`.License` objects with licensing information for this item.
+        :param licenses: List of :class:`.License` objects with licensing information for this item.
         :param kwargs: Dictionary of field names not supported.
         """
         super(Rcl, self).__init__(**kwargs)
 
         # These members have explicit setters and getters
-        self._reference = None
-        self._contact = None
-        self._license = None
+        self._references = None
+        self._contacts = None
+        self._licenses = None
 
         # Set the values for this object
-        self._reference = reference
-        self._contact = contact
-        self._license = license
+        self._references = references
+        self._contacts = contacts
+        self._licenses = licenses
 
     @property
-    def reference(self):
-        return self._reference
+    def references(self):
+        return self._references
 
-    @reference.setter
-    def reference(self, value):
-        self._reference = self._get_object(Reference, value)
+    @references.setter
+    def references(self, value):
+        self._references = self._get_object(Reference, value)
 
-    @reference.deleter
-    def reference(self):
-        del self._reference
-
-    @property
-    def contact(self):
-        return self._contact
-
-    @contact.setter
-    def contact(self, value):
-        self._contact = self._get_object(Person, value)
-
-    @contact.deleter
-    def contact(self):
-        del self._contact
+    @references.deleter
+    def references(self):
+        del self._references
 
     @property
-    def license(self):
-        return self._license
+    def contacts(self):
+        return self._contacts
 
-    @license.setter
-    def license(self, value):
-        self._license = self._get_object(License, value)
+    @contacts.setter
+    def contacts(self, value):
+        self._contacts = self._get_object(Person, value)
 
-    @license.deleter
-    def license(self):
-        del self._license
+    @contacts.deleter
+    def contacts(self):
+        del self._contacts
+
+    @property
+    def licenses(self):
+        return self._licenses
+
+    @licenses.setter
+    def licenses(self, value):
+        self._licenses = self._get_object(License, value)
+
+    @licenses.deleter
+    def licenses(self):
+        del self._licenses
