@@ -1,4 +1,4 @@
-from pypif.object.core.general.pio import Pio
+from pypif.object.core.pio import Pio
 
 
 class Scalar(Pio):

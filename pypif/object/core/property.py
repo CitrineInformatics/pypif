@@ -1,6 +1,7 @@
-from pypif.object.core.general.rcl import Rcl
-from pypif.object.core.general.value import Value
 from pypif.object.core.general.method import Method
+from pypif.object.core.general.value import Value
+
+from pypif.object.core.rcl import Rcl
 
 
 class Property(Value, Rcl):

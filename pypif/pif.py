@@ -1,7 +1,8 @@
 import json
-from pypif.util.pif_encoder import PifEncoder
-from pypif.object.core.chem.chemical_system import ChemicalSystem
+
 from pypif.object.alloy.alloy import Alloy
+from pypif.object.chem import ChemicalSystem
+from pypif.util.pif_encoder import PifEncoder
 
 
 def dump(pif, fp, **kwargs):

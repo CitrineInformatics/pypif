@@ -1,4 +1,4 @@
-from pypif.object.core.chem.chemical_system import ChemicalSystem
+from pypif.object.chem import ChemicalSystem
 
 
 class Phase(ChemicalSystem):
