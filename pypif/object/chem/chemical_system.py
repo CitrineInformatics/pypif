@@ -1,7 +1,6 @@
-from pypif.object.core.general.id import Id
-from pypif.object.core.general.rcl import Rcl
-
-from pypif.object.chem import Composition
+from pypif.object.core.id import Id
+from pypif.object.core.rcl import Rcl
+from pypif.object.chem.composition import Composition
 from pypif.object.core.property import Property
 
 

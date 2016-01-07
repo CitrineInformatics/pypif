@@ -1,7 +1,6 @@
-from pypif.object.core.general.license import License
-from pypif.object.core.general.person import Person
-from pypif.object.core.general.reference import Reference
-
+from pypif.object.core.license import License
+from pypif.object.core.person import Person
+from pypif.object.core.reference import Reference
 from pypif.object.core.pio import Pio
 
 

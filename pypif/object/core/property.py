@@ -1,6 +1,5 @@
-from pypif.object.core.general.method import Method
-from pypif.object.core.general.value import Value
-
+from pypif.object.core.method import Method
+from pypif.object.core.value import Value
 from pypif.object.core.rcl import Rcl
 
 

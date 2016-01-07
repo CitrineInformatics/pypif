@@ -1,5 +1,5 @@
-from pypif.object.core.general.instrument import Instrument
-from pypif.object.core.general.software import Software
+from pypif.object.core.instrument import Instrument
+from pypif.object.core.software import Software
 
 from pypif.object.core.pio import Pio
 

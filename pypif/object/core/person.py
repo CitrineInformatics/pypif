@@ -1,5 +1,4 @@
-from pypif.object.core.general.name import Name
-
+from pypif.object.core.name import Name
 from pypif.object.core.pio import Pio
 
 
