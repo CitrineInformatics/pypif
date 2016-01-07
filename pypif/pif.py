@@ -13,7 +13,7 @@ def dump(pif, fp, **kwargs):
     :param fp: File-like object supporting .write() method to write the serialized object(s) to.
     :param kwargs: Any options available to json.dump().
     """
-    json.dump(pif, fp, cls=PifEncoder, **kwargs)
+    return json.dump(pif, fp, cls=PifEncoder, **kwargs)
 
 
 def dumps(pif, **kwargs):
@@ -23,7 +23,7 @@ def dumps(pif, **kwargs):
     :param pif: Object or list of objects to serialize.
     :param kwargs: Any options available to json.dumps().
     """
-    json.dumps(pif, cls=PifEncoder, **kwargs)
+    return json.dumps(pif, cls=PifEncoder, **kwargs)
 
 
 def load(fp, **kwargs):
