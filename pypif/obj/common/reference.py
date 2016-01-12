@@ -1,6 +1,7 @@
-from pypif.object.core.name import Name
-from pypif.object.core.pages import Pages
-from pypif.object.core.pio import Pio
+from pypif.obj.common.name import Name
+from pypif.obj.common.pages import Pages
+
+from pypif.obj.common.pio import Pio
 
 
 class Reference(Pio):

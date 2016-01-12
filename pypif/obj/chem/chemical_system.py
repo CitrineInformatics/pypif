@@ -1,7 +1,7 @@
-from pypif.object.core.id import Id
-from pypif.object.core.rcl import Rcl
-from pypif.object.chem.composition import Composition
-from pypif.object.core.property import Property
+from pypif.obj.common.id import Id
+from pypif.obj.common.property import Property
+from pypif.obj.common.rcl import Rcl
+from pypif.obj.system.chemical.common.composition import Composition
 
 
 class ChemicalSystem(Rcl):

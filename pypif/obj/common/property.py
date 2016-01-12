@@ -1,6 +1,6 @@
-from pypif.object.core.method import Method
-from pypif.object.core.value import Value
-from pypif.object.core.rcl import Rcl
+from pypif.obj.common.method import Method
+from pypif.obj.common.rcl import Rcl
+from pypif.obj.common.value import Value
 
 
 class Property(Value, Rcl):

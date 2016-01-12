@@ -1,4 +1,4 @@
-from pypif.object.core.pio import Pio
+from pypif.obj.common.pio import Pio
 
 
 class Software(Pio):

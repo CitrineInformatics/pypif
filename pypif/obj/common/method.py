@@ -1,7 +1,7 @@
-from pypif.object.core.instrument import Instrument
-from pypif.object.core.software import Software
+from pypif.system.common.instrument import Instrument
+from pypif.system.common.software import Software
 
-from pypif.object.core.pio import Pio
+from pypif.obj.common.pio import Pio
 
 
 class Method(Pio):

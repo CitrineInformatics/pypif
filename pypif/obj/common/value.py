@@ -1,5 +1,5 @@
-from pypif.object.core.scalar import Scalar
-from pypif.object.core.pio import Pio
+from pypif.obj.common.pio import Pio
+from pypif.obj.common.scalar import Scalar
 
 
 class Value(Pio):

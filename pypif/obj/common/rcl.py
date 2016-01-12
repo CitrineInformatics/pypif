@@ -1,7 +1,7 @@
-from pypif.object.core.license import License
-from pypif.object.core.person import Person
-from pypif.object.core.reference import Reference
-from pypif.object.core.pio import Pio
+from pypif.obj.common.license import License
+from pypif.obj.common.person import Person
+from pypif.obj.common.pio import Pio
+from pypif.obj.common.reference import Reference
 
 
 class Rcl(Pio):

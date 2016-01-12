@@ -1,4 +1,4 @@
-from pypif.object.chem.chemical_system import ChemicalSystem
+from pypif.obj.chem.chemical_system import ChemicalSystem
 
 
 class Alloy(ChemicalSystem):
