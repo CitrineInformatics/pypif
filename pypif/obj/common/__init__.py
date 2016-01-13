@@ -5,6 +5,7 @@ from method import Method
 from name import Name
 from pages import Pages
 from person import Person
+from process_step import ProcessStep
 from property import Property
 from reference import Reference
 from scalar import Scalar

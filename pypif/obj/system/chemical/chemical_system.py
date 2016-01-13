@@ -8,7 +8,7 @@ class ChemicalSystem(System):
     """
 
     def __init__(self, names=None, ids=None, chemical_formula=None, composition=None, properties=None,
-                 processing=None, sub_systems=None, references=None, contacts=None, licenses=None, **kwargs):
+                 preparation=None, sub_systems=None, references=None, contacts=None, licenses=None, **kwargs):
         """
         Constructor.
 
@@ -17,14 +17,14 @@ class ChemicalSystem(System):
         :param chemical_formula: String with the chemical formula.
         :param composition: List of :class:`.Composition` objects that describe the composition of the chemical system.
         :param properties: List of :class:`.Property` objects with properties of the chemical system.
-        :param processing: List of :class:`.Value` objects with the processing information of the chemical system.
+        :param preparation: List of :class:`.ProcessStep` objects with the preparation information of the system.
         :param sub_systems: List of :class:`.ChemicalSystem` objects with the subsystems of the chemical system.
         :param references: List of :class:`.Reference` objects where information about the system is published.
         :param contacts: List of :class:`.Person` objects with people to contact for information about the system.
         :param licenses: List of :class:`.License` objects with licensing information for data about the system.
         :param kwargs: Dictionary of field names not supported.
         """
-        super(ChemicalSystem, self).__init__(names=names, ids=ids, properties=properties, processing=processing,
+        super(ChemicalSystem, self).__init__(names=names, ids=ids, properties=properties, preparation=preparation,
                                              references=references, contacts=contacts, licenses=licenses, **kwargs)
 
         # These are the members that have explicit getters and setters
