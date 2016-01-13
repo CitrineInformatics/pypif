@@ -1,6 +1,5 @@
 from pypif.obj.common.name import Name
 from pypif.obj.common.pages import Pages
-
 from pypif.obj.common.pio import Pio
 
 

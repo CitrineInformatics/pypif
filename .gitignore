@@ -3,4 +3,4 @@
 build
 .DS_Store
 dist
-Mifkit.egg*
+pypif.egg-info*

@@ -1,7 +1,6 @@
 import json
 
-from pypif.obj.alloy.alloy import Alloy
-from pypif.obj.chem.chemical_system import ChemicalSystem
+from pypif.obj import *
 from pypif.util.pif_encoder import PifEncoder
 
 
@@ -70,8 +69,14 @@ def _dict_to_pio(d):
     :param d: Dictionary to convert.
     :return: Single object derived from :class:`.Pio`.
     """
-    if 'ChemicalSystem' in d:
-        return ChemicalSystem(**d['ChemicalSystem'])
-    if 'Alloy' in d:
-        return Alloy(**d['Alloy'])
-    raise ValueError('Dictionary does not contain a valid top-level PIO type: ' + ', '.join(d.keys()))
+    if 'category' not in d:
+        raise ValueError('Dictionary does not contains a category field: ' + ', '.join(d.keys()))
+    elif d['category'] == 'system':
+        return System(**d)
+    elif d['category'] == 'system.chemical':
+        return ChemicalSystem(**d)
+    elif d['category'] == 'system.chemical.alloy':
+        return Alloy(**d)
+    elif d['category'] == 'system.chemical.alloy.phase':
+        return AlloyPhase(**d)
+    raise ValueError('Dictionary does not contain a valid top-level category: ' + str(d['category']))

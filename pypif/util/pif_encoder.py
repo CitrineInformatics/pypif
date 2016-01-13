@@ -1,5 +1,4 @@
 import json
-from pypif.util.case import to_snake_case
 
 
 class PifEncoder(json.JSONEncoder):
@@ -15,5 +14,9 @@ class PifEncoder(json.JSONEncoder):
         object derived from the Pio class; or a list of objects, each derived from the Pio class.
         :return: List of dictionaries, each representing a physical information object, ready to be serialized.
         """
-        mod_obj = [] if obj is None else obj if isinstance(obj, list) else [obj]
-        return [{to_snake_case(i.__class__.__name__): i.as_pif_dictionary()} for i in mod_obj]
+        if obj is None:
+            return []
+        elif isinstance(obj, list):
+            return [i.as_pif_dictionary() for i in obj]
+        else:
+            return obj.as_pif_dictionary()

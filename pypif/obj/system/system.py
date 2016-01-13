@@ -9,12 +9,11 @@ class System(Rcl):
     Base representation for all systems.
     """
 
-    def __init__(self, categories=None, names=None, ids=None, properties=None, processing=None,
-                 sub_systems=None, references=None, contacts=None, licenses=None, **kwargs):
+    def __init__(self, names=None, ids=None, properties=None, processing=None, sub_systems=None, references=None,
+                 contacts=None, licenses=None, **kwargs):
         """
         Constructor.
 
-        :param categories: List of strings with the categories of the system, from broad to specific.
         :param names: List of strings with common names of the system.
         :param ids: List of :class:`.Id` objects that identify the system.
         :param properties: List of :class:`.Property` objects with properties of the system.
@@ -34,12 +33,12 @@ class System(Rcl):
         self._sub_systems = None
 
         # Set the values for this object
-        self.categories = categories
         self.names = names
         self.ids = ids
         self.properties = properties
         self.processing = processing
         self.sub_systems = sub_systems
+        self.category = kwargs['category'] if 'category' in kwargs else 'system'
 
     @property
     def ids(self):
