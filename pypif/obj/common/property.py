@@ -21,7 +21,7 @@ class Property(Value, Rcl):
         :param units: String with the units of the property.
         :param conditions: List of :class:`.Value` objects with the conditions at which the property exists.
         :param method: :class:`.Method` object describing the method used to get the property value.
-        :param data_type: String set to either "EXPERIMENTAL", "COMPUTATIONAL", or "MACHINE_LEARNING" to set the
+        :param data_type: String containing "EXPERIMENTAL", "COMPUTATIONAL", or "MACHINE_LEARNING" to set the
                 broad category of data.
         :param references: List of :class:`.Reference` objects where information about the property is published.
         :param contacts: List of :class:`.Person` objects with people to contact for information about the property.
