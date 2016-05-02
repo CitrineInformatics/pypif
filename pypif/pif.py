@@ -1,6 +1,7 @@
 import json
 
 from pypif.obj import *
+from pypif.util.case import keys_to_snake_case
 from pypif.util.pif_encoder import PifEncoder
 
 
@@ -69,6 +70,7 @@ def _dict_to_pio(d):
     :param d: Dictionary to convert.
     :return: Single object derived from :class:`.Pio`.
     """
+    d = keys_to_snake_case(d)
     if 'category' not in d:
         raise ValueError('Dictionary does not contains a category field: ' + ', '.join(d.keys()))
     elif d['category'] == 'system':
