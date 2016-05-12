@@ -40,7 +40,12 @@ class Alloy(ChemicalSystem):
 
     @property
     def phases(self):
-        return self._sub_systems
+        if isinstance(self._sub_systems, AlloyPhase):
+            return self._sub_systems
+        elif isinstance(self._sub_systems, list):
+            return [i for i in self._sub_systems if isinstance(i, AlloyPhase)]
+        else:
+            return None
 
     @phases.setter
     def phases(self, phases):
@@ -59,4 +64,7 @@ class Alloy(ChemicalSystem):
 
     @phases.deleter
     def phases(self):
-        self._sub_systems = None
+        if isinstance(self._sub_systems, AlloyPhase):
+            self._sub_systems = None
+        elif isinstance(self._sub_systems, list):
+            self._sub_systems = [i for i in self._sub_systems if not isinstance(i, AlloyPhase)]
