@@ -61,7 +61,7 @@ class Alloy(ChemicalSystem):
             self._sub_systems = [self._sub_systems, phases]
         elif self._sub_systems is None:
             self._sub_systems = phases
-        else:
+        elif phases is not None:
             raise RuntimeError('Cannot combine phases')
 
     @phases.deleter
