@@ -12,26 +12,37 @@ class ProcessStep(Pio):
         Constructor.
 
         :param name: String with the name of the process step.
-        :param details: List of :class:`.Value` objects with the
-        :param kwargs: Dictionary of field names not supported.
+        :param details: List of dictionaries or :class:`.Value` objects with the details of the step.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(ProcessStep, self).__init__(**kwargs)
-
-        # These are the members that have explicit getters and setters
-        self._details = None
-
-        # Set the values for this object
+        self._name = None
         self.name = name
+        self._details = None
         self.details = details
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._validate_type('name', name, basestring)
+        self._name = name
+
+    @name.deleter
+    def name(self):
+        self._name = None
 
     @property
     def details(self):
         return self._details
 
     @details.setter
-    def details(self, value):
-        self._details = self._get_object(Value, value)
+    def details(self, details):
+        self._validate_list_type('details', details, dict, Value)
+        self._details = self._get_object(Value, details)
 
     @details.deleter
     def details(self):
-        del self._details
+        self._details = None

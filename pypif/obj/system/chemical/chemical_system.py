@@ -13,49 +13,53 @@ class ChemicalSystem(System):
         Constructor.
 
         :param names: List of strings with common names of the chemical system.
-        :param ids: List of :class:`.Id` objects that identify the chemical system.
+        :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
         :param chemical_formula: String with the chemical formula.
-        :param composition: List of :class:`.Composition` objects that describe the composition of the chemical system.
-        :param properties: List of :class:`.Property` objects with properties of the chemical system.
-        :param preparation: List of :class:`.ProcessStep` objects with the preparation information of the system.
-        :param sub_systems: List of :class:`.ChemicalSystem` objects with the subsystems of the chemical system.
-        :param references: List of :class:`.Reference` objects where information about the system is published.
-        :param contacts: List of :class:`.Person` objects with people to contact for information about the system.
-        :param licenses: List of :class:`.License` objects with licensing information for data about the system.
-        :param kwargs: Dictionary of field names not supported.
+        :param composition: List of dictionaries or :class:`.Composition` objects that describe the composition of
+                the chemical system.
+        :param properties: List of dictionaries or :class:`.Property` objects with properties of the system.
+        :param preparation: List of dictionaries or :class:`.ProcessStep` objects with the preparation
+                information of the system.
+        :param sub_systems: List of dictionaries or :class:`.System` objects with the subsystems of the system.
+        :param references: List of dictionaries or :class:`.Reference` objects where information about the system
+                is published.
+        :param contacts: List of dictionaries, strings, or :class:`.Person` objects with people to contact for
+                information about the system.
+        :param licenses: List of dictionaries, strings, or :class:`.License` objects with licensing information
+                for data about the system.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(ChemicalSystem, self).__init__(names=names, ids=ids, properties=properties, preparation=preparation,
-                                             references=references, contacts=contacts, licenses=licenses, **kwargs)
-
-        # These are the members that have explicit getters and setters
-        self._composition = None
-
-        # Set the values for this object
+                                             sub_systems=sub_systems, references=references, contacts=contacts,
+                                             licenses=licenses, **kwargs)
+        self._chemical_formula = None
         self.chemical_formula = chemical_formula
+        self._composition = None
         self.composition = composition
-        self.sub_systems = sub_systems
-        self.category = 'system.chemical'
+        self.category = kwargs['category'] if 'category' in kwargs else 'system.chemical'
+
+    @property
+    def chemical_formula(self):
+        return self._chemical_formula
+
+    @chemical_formula.setter
+    def chemical_formula(self, chemical_formula):
+        self._validate_type('chemical_formula', chemical_formula, basestring)
+        self._chemical_formula = chemical_formula
+
+    @chemical_formula.deleter
+    def chemical_formula(self):
+        self._chemical_formula = None
 
     @property
     def composition(self):
         return self._composition
 
     @composition.setter
-    def composition(self, value):
-        self._composition = self._get_object(Composition, value)
+    def composition(self, composition):
+        self._validate_list_type('composition', composition, dict, Composition)
+        self._composition = self._get_object(Composition, composition)
 
     @composition.deleter
     def composition(self):
-        del self._composition
-
-    @property
-    def sub_systems(self):
-        return self._sub_systems
-
-    @sub_systems.setter
-    def sub_systems(self, value):
-        self._sub_systems = self._get_object(ChemicalSystem, value)
-
-    @sub_systems.deleter
-    def sub_systems(self):
-        del self._sub_systems
+        self._composition = None

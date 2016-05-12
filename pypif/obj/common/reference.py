@@ -24,84 +24,249 @@ class Reference(Pio):
         :param volume: String with the volume in which the work was published.
         :param issue: String with the issue in which the work was published.
         :param year: String with the year in which the work was published.
-        :param pages: :class:`.Pages` object with the starting and ending pages for the published work.
-        :param authors: List of :class:`.Name` objects with information about the authors.
-        :param editors: List of :class:`.Name` objects with information about the editors.
+        :param pages: String, integer, dictionary, or :class:`.Pages` object with the starting and ending pages for
+                the published work.
+        :param authors: List of strings, dictionaries, or :class:`.Name` objects with information about the authors.
+        :param editors: List of strings, dictionaries, or :class:`.Name` objects with information about the editors.
         :param affiliations: List of strings with affiliations.
         :param acknowledgements: List of strings with acknowledgements.
-        :param references: List of :class:`.Reference` objects with works cited by this published work.
-        :param kwargs: Dictionary of field names not supported.
+        :param references: List of dictionaries or :class:`.Reference` objects with works cited by this published work.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(Reference, self).__init__(**kwargs)
-
-        # These members have explicit setters and getters
-        self._pages = None
-        self._authors = None
-        self._editors = None
-        self._references = None
-
-        # Set the values for this object
+        self._doi = None
         self.doi = doi
+        self._isbn = None
         self.isbn = isbn
+        self._issn = None
         self.issn = issn
+        self._url = None
         self.url = url
+        self._title = None
         self.title = title
+        self._publisher = None
         self.publisher = publisher
+        self._journal = None
         self.journal = journal
+        self._volume = None
         self.volume = volume
+        self._issue = None
         self.issue = issue
+        self._year = None
         self.year = year
+        self._pages = None
         self.pages = pages
+        self._authors = None
         self.authors = authors
+        self._editors = None
         self.editors = editors
+        self._affiliations = None
         self.affiliations = affiliations
+        self._acknowledgements = None
         self.acknowledgements = acknowledgements
+        self._references = None
         self.references = references
+
+    @property
+    def doi(self):
+        return self._doi
+
+    @doi.setter
+    def doi(self, doi):
+        self._validate_type('doi', doi, basestring)
+        self._doi = doi
+
+    @doi.deleter
+    def doi(self):
+        self._doi = None
+
+    @property
+    def isbn(self):
+        return self._isbn
+
+    @isbn.setter
+    def isbn(self, isbn):
+        self._validate_type('isbn', isbn, basestring)
+        self._isbn = isbn
+
+    @isbn.deleter
+    def isbn(self):
+        self._isbn = None
+
+    @property
+    def issn(self):
+        return self.issn
+
+    @issn.setter
+    def issn(self, issn):
+        self._validate_type('issn', issn, basestring)
+        self._issn = issn
+
+    @issn.deleter
+    def issn(self):
+        self._issn = None
+
+    @property
+    def url(self):
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        self._validate_type('url', url, basestring)
+        self._url = url
+
+    @url.deleter
+    def url(self):
+        self._url = None
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        self._validate_type('title', title, basestring)
+        self._title = title
+
+    @title.deleter
+    def title(self):
+        self._title = None
+
+    @property
+    def publisher(self):
+        return self._publisher
+
+    @publisher.setter
+    def publisher(self, publisher):
+        self._validate_type('publisher', publisher, basestring)
+        self._publisher = publisher
+
+    @publisher.deleter
+    def publisher(self):
+        self._publisher = None
+
+    @property
+    def journal(self):
+        return self._journal
+
+    @journal.setter
+    def journal(self, journal):
+        self._validate_type('journal', journal, basestring)
+        self._journal = journal
+
+    @journal.deleter
+    def journal(self):
+        self._journal = None
+
+    @property
+    def volume(self):
+        return self._volume
+
+    @volume.setter
+    def volume(self, volume):
+        self._validate_type('volume', volume, basestring)
+        self._volume = volume
+
+    @volume.deleter
+    def volume(self):
+        self._volume = None
+
+    @property
+    def issue(self):
+        return self._issue
+
+    @issue.setter
+    def issue(self, issue):
+        self._validate_type('issue', issue, basestring)
+        self._issue = issue
+
+    @issue.deleter
+    def issue(self):
+        self._issue = None
+
+    @property
+    def year(self):
+        return self._year
+
+    @year.setter
+    def year(self, year):
+        self._validate_type('year', year, basestring)
+        self._year = year
+
+    @year.deleter
+    def year(self):
+        self._year = None
 
     @property
     def pages(self):
         return self._pages
 
     @pages.setter
-    def pages(self, value):
-        self._pages = self._get_object(Pages, value)
+    def pages(self, pages):
+        self._validate_type('pages', pages, basestring, int, dict, Pages)
+        self._pages = self._get_object(Pages, pages)
 
     @pages.deleter
     def pages(self):
-        del self._pages
+        self._pages = None
 
     @property
     def authors(self):
         return self._authors
 
     @authors.setter
-    def authors(self, value):
-        self._authors = self._get_object(Name, value)
+    def authors(self, authors):
+        self._validate_list_type('authors', authors, basestring, dict, Name)
+        self._authors = self._get_object(Name, authors)
 
     @authors.deleter
     def authors(self):
-        del self._authors
+        self._authors = None
 
     @property
     def editors(self):
         return self._editors
 
     @editors.setter
-    def editors(self, value):
-        self._editors = self._get_object(Name, value)
+    def editors(self, editors):
+        self._validate_list_type('editors', editors, basestring, dict, Name)
+        self._editors = self._get_object(Name, editors)
 
     @editors.deleter
     def editors(self):
-        del self._editors
+        self._editors = None
+
+    @property
+    def affiliations(self):
+        return self._affiliations
+
+    @affiliations.setter
+    def affiliations(self, affiliations):
+        self._validate_list_type('affiliations', affiliations, basestring)
+        self._affiliations = affiliations
+
+    @affiliations.deleter
+    def affiliations(self):
+        self._affiliations = None
+
+    @property
+    def acknowledgements(self):
+        return self._acknowledgements
+
+    @acknowledgements.setter
+    def acknowledgements(self, acknowledgements):
+        self._validate_list_type('acknowledgements', acknowledgements, basestring)
+        self._acknowledgements = acknowledgements
+
+    @acknowledgements.deleter
+    def acknowledgements(self):
+        self._acknowledgements = None
 
     @property
     def references(self):
         return self._references
 
     @references.setter
-    def references(self, value):
-        self._references = self._get_object(Reference, value)
-
-    @references.deleter
-    def references(self):
-        del self._references
+    def references(self, references):
+        self._validate_list_type('references', references, dict, Reference)
+        self._references = self._get_object(Reference, references)

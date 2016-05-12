@@ -56,3 +56,74 @@ class Pio(object):
             return class_(**keys_to_snake_case(obj))
         else:
             return obj
+
+    def _validate_type(self, name, obj, *args):
+        """
+        Helper function that checks the input object type against each in a list of classes. This function
+        also allows the input value to be equal to None.
+
+        :param name: Name of the object.
+        :param obj: Object to check the type of.
+        :param args: List of classes.
+        :raises TypeError: if the input object is not of any of the allowed types.
+        """
+        if obj is None:
+            return
+        for arg in args:
+            if isinstance(obj, arg):
+                return
+        raise TypeError(self.__class__.__name__ + '.' + name + ' is of type ' + type(obj).__name__ +
+                        '. Must be equal to None or one of the following types: ' +
+                        ', '.join([arg.__name__ for arg in args]))
+
+    def _validate_type_not_null(self, name, obj, *args):
+        """
+        Helper function that checks the input object type against each in a list of classes.
+
+        :param name: Name of the object.
+        :param obj: Object to check the type of.
+        :param args: List of classes.
+        :raises TypeError: if the input object is not of any of the allowed types.
+        """
+        for arg in args:
+            if isinstance(obj, arg):
+                return
+        raise TypeError(self.__class__.__name__ + '.' + name + ' is of type ' + type(obj).__name__ +
+                        '. Must be one of the following types [' +
+                        ', '.join([arg.__name__ for arg in args]) + ']')
+
+    def _validate_list_type(self, name, obj, *args):
+        """
+        Helper function that checks the input object type against each in a list of classes, or if the input object
+        is a list, each value that it contains against that list.
+
+        :param name: Name of the object.
+        :param obj: Object to check the type of.
+        :param args: List of classes.
+        :raises TypeError: if the input object is not of any of the allowed types.
+        """
+        if obj is None:
+            return
+        if isinstance(obj, list):
+            for i in obj:
+                self._validate_type_not_null(name,  i, *args)
+        else:
+            self._validate_type(name, obj, *args)
+
+    def _validate_nested_list_type(self, name, obj, nested_level, *args):
+        """
+        Helper function that checks the input object as a list then recursively until nested_level is 1.
+
+        :param name: Name of the object.
+        :param obj: Object to check the type of.
+        :param nested_level: Integer with the current nested level.
+        :param args: List of classes.
+        :raises TypeError: if the input object is not of any of the allowed types.
+        """
+        if nested_level <= 1:
+            self._validate_list_type(name, obj, *args)
+        else:
+            if not isinstance(obj, list):
+                raise TypeError(self.__class__.__name__ + '.' + name + ' contains value of type ' +
+                                type(obj).__name__ + ' where a list is expected')
+            self._validate_nested_list_type(name, obj, nested_level - 1, *args)

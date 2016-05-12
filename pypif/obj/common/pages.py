@@ -10,10 +10,38 @@ class Pages(Pio):
         """
         Constructor.
 
-        :param start: String with the starting page.
-        :param end: String with the ending page.
-        :param kwargs: Dictionary of field names not supported.
+        :param start: String or integer with the starting page.
+        :param end: String or integer with the ending page.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(Pages, self).__init__(**kwargs)
+        self._start = None
         self.start = start
+        self._end = None
         self.end = end
+
+    @property
+    def start(self):
+        return self._start
+
+    @start.setter
+    def start(self, start):
+        self._validate_type('start', start, basestring, int)
+        self._start = start
+
+    @start.deleter
+    def start(self):
+        self._start = None
+
+    @property
+    def end(self):
+        return self._end
+
+    @end.setter
+    def end(self, end):
+        self._validate_type('end', end, basestring, int)
+        self._end = end
+
+    @end.deleter
+    def end(self):
+        self._end = None

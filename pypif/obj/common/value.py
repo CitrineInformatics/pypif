@@ -1,3 +1,4 @@
+import numbers
 from pypif.obj.common.pio import Pio
 from pypif.obj.common.scalar import Scalar
 
@@ -11,56 +12,88 @@ class Value(Pio):
         """
         Constructor.
 
-        :param name: Name of the value.
-        :param scalars: One or more Scalar objects.
-        :param vectors: One or more lists of Scalar objects, each representing a vector.
-        :param matrices: One of more lists of lists of Scalar objects, each representing a matrix with rows as the
-        innermost lists.
+        :param name: String with the name of the value.
+        :param scalars: One or more dictionaries, strings, numbers, or :class:`.Scalar` objects.
+        :param vectors: One or more lists of dictionaries, strings, numbers, or :class:`.Scalar` objects,
+                each representing a vector.
+        :param matrices: One of more lists of lists of dictionaries, strings, numbers, or :class:`.Scalar` objects,
+                each representing a matrix with rows as the innermost lists.
         :param units: String with the units of the value.
-        :param kwargs: Dictionary of field names not supported.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(Value, self).__init__(**kwargs)
-        self._scalars = None
-        self._vectors = None
-        self._matrices = None
+        self._name = None
         self.name = name
+        self._scalars = None
         self.scalars = scalars
+        self._vectors = None
         self.vectors = vectors
+        self._matrices = None
         self.matrices = matrices
+        self._units = None
         self.units = units
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._validate_type('name', name, basestring)
+        self._name = name
+
+    @name.deleter
+    def name(self):
+        self._name = None
 
     @property
     def scalars(self):
         return self._scalars
 
     @scalars.setter
-    def scalars(self, value):
-        self._scalars = self._get_object(Scalar, value)
+    def scalars(self, scalars):
+        self._validate_list_type('scalars', scalars, dict, basestring, numbers.Number, Scalar)
+        self._scalars = self._get_object(Scalar, scalars)
 
     @scalars.deleter
     def scalars(self):
-        del self._scalars
+        self._scalars = None
 
     @property
     def vectors(self):
         return self._vectors
 
     @vectors.setter
-    def vectors(self, value):
-        self._vectors = self._get_object(Scalar, value)
+    def vectors(self, vectors):
+        self._validate_nested_list_type('vectors', vectors, 2, dict, basestring, numbers.Number, Scalar)
+        self._vectors = self._get_object(Scalar, vectors)
 
     @vectors.deleter
     def vectors(self):
-        del self._vectors
+        self._vectors = None
 
     @property
     def matrices(self):
         return self._matrices
 
     @matrices.setter
-    def matrices(self, value):
-        self._matrices = self._get_object(Scalar, value)
+    def matrices(self, matrices):
+        self._validate_nested_list_type('matrices', matrices, 3, dict, basestring, numbers.Number, Scalar)
+        self._matrices = self._get_object(Scalar, matrices)
 
     @matrices.deleter
     def matrices(self):
-        del self._matrices
+        self._matrices = None
+
+    @property
+    def units(self):
+        return self._units
+
+    @units.setter
+    def units(self, units):
+        self._validate_type('units', units, basestring)
+        self._units = units
+
+    @units.deleter
+    def units(self):
+        self._units = None

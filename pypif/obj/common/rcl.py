@@ -13,56 +13,57 @@ class Rcl(Pio):
         """
         Constructor.
 
-        :param references: List of :class:`.Reference` objects where information about this item is published.
-        :param contacts: List of :class:`.Person` objects with people that can be contacted for information about
-        this item.
-        :param licenses: List of :class:`.License` objects with licensing information for this item.
-        :param kwargs: Dictionary of field names not supported.
+        :param references: List of dictionaries or :class:`.Reference` objects where information about this
+                item is published.
+        :param contacts: List of dictionaries, strings, or :class:`.Person` objects with people that can be
+                contacted for information about this item.
+        :param licenses: List of dictionaries, strings, or :class:`.License` objects with licensing information
+                for this item.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(Rcl, self).__init__(**kwargs)
-
-        # These members have explicit setters and getters
         self._references = None
+        self.references = references
         self._contacts = None
+        self.contacts = contacts
         self._licenses = None
-
-        # Set the values for this object
-        self._references = references
-        self._contacts = contacts
-        self._licenses = licenses
+        self.licenses = licenses
 
     @property
     def references(self):
         return self._references
 
     @references.setter
-    def references(self, value):
-        self._references = self._get_object(Reference, value)
+    def references(self, references):
+        self._validate_list_type('references', references, dict, Reference)
+        self._references = self._get_object(Reference, references)
 
     @references.deleter
     def references(self):
-        del self._references
+        self._references = None
 
     @property
     def contacts(self):
         return self._contacts
 
     @contacts.setter
-    def contacts(self, value):
-        self._contacts = self._get_object(Person, value)
+    def contacts(self, contacts):
+        self._validate_list_type('contacts', contacts, dict, basestring, Person)
+        self._contacts = self._get_object(Person, contacts)
 
     @contacts.deleter
     def contacts(self):
-        del self._contacts
+        self._contacts = None
 
     @property
     def licenses(self):
         return self._licenses
 
     @licenses.setter
-    def licenses(self, value):
-        self._licenses = self._get_object(License, value)
+    def licenses(self, licenses):
+        self._validate_list_type('licenses', licenses, dict, basestring, License)
+        self._licenses = self._get_object(License, licenses)
 
     @licenses.deleter
     def licenses(self):
-        del self._licenses
+        self._licenses = None

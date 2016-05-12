@@ -13,41 +13,49 @@ class Method(Pio):
         Constructor.
 
         :param name: String with the name of the method.
-        :param instruments: List of :class:`.Instrument` objects used in the method.
-        :param software: List of :class:`.Software` objects used in the method.
-        :param kwargs: Dictionary of field names not supported.
+        :param instruments: List of dictionaries or :class:`.Instrument` objects used in the method.
+        :param software: List of dictionaries or :class:`.Software` objects used in the method.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(Method, self).__init__(**kwargs)
-
-        # These members have explicit setters and getters
-        self._instruments = None
-        self._software = None
-
-        # Set the values for this object
+        self._name = None
         self.name = name
+        self._instruments = None
         self.instruments = instruments
+        self._software = None
         self.software = software
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._validate_type('name', name, basestring)
+        self._name = name
 
     @property
     def instruments(self):
         return self._instruments
 
     @instruments.setter
-    def instruments(self, value):
-        self._instruments = self._get_object(Instrument, value)
+    def instruments(self, instruments):
+        self._validate_list_type('instruments', instruments, dict, Instrument)
+        self._instruments = self._get_object(Instrument, instruments)
 
     @instruments.deleter
     def instruments(self):
-        del self._instruments
+        self._instruments = None
 
     @property
     def software(self):
         return self._software
 
     @software.setter
-    def software(self, value):
-        self._software = self._get_object(Software, value)
+    def software(self, software):
+        self._validate_list_type('software', software, dict, Software)
+        self._software = self._get_object(Software, software)
 
     @software.deleter
     def software(self):
-        del self._software
+        self._software = None

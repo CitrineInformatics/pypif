@@ -13,9 +13,51 @@ class License(Pio):
         :param name: String with the name of the license.
         :param description: String with the description of the license.
         :param url: String with the URL to the license.
-        :param kwargs: Dictionary of field names not supported.
+        :param kwargs: Dictionary of fields that are not supported.
         """
         super(License, self).__init__(**kwargs)
+        self._name = None
         self.name = name
+        self._description = None
         self.description = description
+        self._url = None
         self.url = url
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._validate_type('name', name, basestring)
+        self._name = name
+
+    @name.deleter
+    def name(self):
+        self._name = None
+
+    @property
+    def description(self):
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        self._validate_type('description', description, basestring)
+        self._description = description
+
+    @description.deleter
+    def description(self):
+        self._description = None
+
+    @property
+    def url(self):
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        self._validate_type('url', url, basestring)
+        self._url = url
+
+    @url.deleter
+    def url(self):
+        self._url = None
