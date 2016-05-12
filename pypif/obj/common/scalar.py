@@ -1,3 +1,4 @@
+import numbers
 from pypif.obj.common.pio import Pio
 
 
@@ -12,12 +13,12 @@ class Scalar(Pio):
         """
         Constructor.
 
-        :param value: String with the value for the point.
-        :param minimum: String with the minimum value for the point.
+        :param value: String or number with the value for the point.
+        :param minimum: String or number with the minimum value for the point.
         :apram inclusive_minimum: Boolean with whether the minimum is inclusive.
-        :param maximum: String with the maximum value for the point.
+        :param maximum: String or number with the maximum value for the point.
         :param inclusive_maximum: Boolean with whether the maximum is inclusive.
-        :param uncertainty: String with the  isotropic uncertainty for the point.
+        :param uncertainty: String or number with the  isotropic uncertainty for the point.
         :param approximate: Boolean with whether the value is approximate.
         :param kwargs: Dictionary of fields that are not supported.
         """
@@ -43,7 +44,7 @@ class Scalar(Pio):
 
     @value.setter
     def value(self, value):
-        self._validate_type('value', value, basestring)
+        self._validate_type('value', value, basestring, numbers.Number)
         self._value = value
 
     @value.deleter
@@ -56,7 +57,7 @@ class Scalar(Pio):
 
     @minimum.setter
     def minimum(self, minimum):
-        self._validate_type('minimum', minimum, basestring)
+        self._validate_type('minimum', minimum, basestring, numbers.Number)
         self._minimum = minimum
 
     @minimum.deleter
@@ -82,7 +83,7 @@ class Scalar(Pio):
 
     @maximum.setter
     def maximum(self, maximum):
-        self._validate_type('maximum', maximum, basestring)
+        self._validate_type('maximum', maximum, basestring, numbers.Number)
         self._maximum = maximum
 
     @maximum.deleter
@@ -108,7 +109,7 @@ class Scalar(Pio):
 
     @uncertainty.setter
     def uncertainty(self, uncertainty):
-        self._validate_type('uncertainty', uncertainty, basestring)
+        self._validate_type('uncertainty', uncertainty, basestring, numbers.Number)
         self._uncertainty = uncertainty
 
     @uncertainty.deleter
