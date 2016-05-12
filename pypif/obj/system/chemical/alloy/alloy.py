@@ -59,6 +59,8 @@ class Alloy(ChemicalSystem):
             self._sub_systems = self._sub_systems + [phases]
         elif isinstance(self._sub_systems, System) and isinstance(phases, System):
             self._sub_systems = [self._sub_systems, phases]
+        elif self._sub_systems is None:
+            self._sub_systems = phases
         else:
             raise RuntimeError('Cannot combine phases')
 
