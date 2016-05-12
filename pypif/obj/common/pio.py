@@ -123,6 +123,8 @@ class Pio(object):
         if nested_level <= 1:
             self._validate_list_type(name, obj, *args)
         else:
+            if obj is None:
+                return
             if not isinstance(obj, list):
                 raise TypeError(self.__class__.__name__ + '.' + name + ' contains value of type ' +
                                 type(obj).__name__ + ' where a list is expected')
