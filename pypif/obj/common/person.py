@@ -7,16 +7,17 @@ class Person(Pio):
     Information about a person.
     """
 
-    def __init__(self, name=None, email=None, orcid=None, **kwargs):
+    def __init__(self, name=None, email=None, orcid=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param name: :class: Dictionary or `.Name` object for the person.
         :param email: String with the email address of the person.
         :param orcid: String with the `ORCID <a href="http://orcid.org">ORCID</a>`_ identifier of the person.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Person, self).__init__(**kwargs)
+        super(Person, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._email = None

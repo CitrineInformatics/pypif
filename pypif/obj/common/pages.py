@@ -6,15 +6,16 @@ class Pages(Pio):
     Representation of the starting and ending pages of a reference.
     """
 
-    def __init__(self, start=None, end=None, **kwargs):
+    def __init__(self, start=None, end=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param start: String or integer with the starting page.
         :param end: String or integer with the ending page.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Pages, self).__init__(**kwargs)
+        super(Pages, self).__init__(tags=tags, **kwargs)
         self._start = None
         self.start = start
         self._end = None

@@ -6,7 +6,7 @@ class Software(Pio):
     Information about a software application.
     """
 
-    def __init__(self, name=None, version=None, producer=None, url=None, **kwargs):
+    def __init__(self, name=None, version=None, producer=None, url=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -14,9 +14,10 @@ class Software(Pio):
         :param version: String with the version of the software.
         :param producer: String with the name of the producer of the software.
         :param url: URL to the software website.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Software, self).__init__(**kwargs)
+        super(Software, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._version = None

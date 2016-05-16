@@ -6,7 +6,7 @@ class Instrument(Pio):
     Information about an instrument used to take a measurement.
     """
 
-    def __init__(self, name=None, model=None, producer=None, url=None, **kwargs):
+    def __init__(self, name=None, model=None, producer=None, url=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -14,9 +14,10 @@ class Instrument(Pio):
         :param model: String with the model of the instrument.
         :param producer: String with the name of the producer of the instrument.
         :param url: URL to the instrument website.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Instrument, self).__init__(**kwargs)
+        super(Instrument, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._model = None

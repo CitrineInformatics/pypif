@@ -9,7 +9,7 @@ class Composition(Pio):
     """
 
     def __init__(self, element=None, actual_weight_percent=None, actual_atomic_percent=None, ideal_weight_percent=None,
-                 ideal_atomic_percent=None, **kwargs):
+                 ideal_atomic_percent=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -22,9 +22,10 @@ class Composition(Pio):
                 - dictionary, string, number, or :class:`.Scalar` object.
         :param ideal_atomic_percent: Ideal percentage of the atoms in the chemical that are this element
                 - dictionary, string, number, or :class:`.Scalar` object.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Composition, self).__init__(**kwargs)
+        super(Composition, self).__init__(tags=tags, **kwargs)
         self._element = None
         self.element = element
         self._actual_weight_percent = None

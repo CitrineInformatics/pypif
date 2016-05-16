@@ -6,16 +6,17 @@ class License(Pio):
     Information about a license that applies to some item.
     """
 
-    def __init__(self, name=None, description=None, url=None, **kwargs):
+    def __init__(self, name=None, description=None, url=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param name: String with the name of the license.
         :param description: String with the description of the license.
         :param url: String with the URL to the license.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(License, self).__init__(**kwargs)
+        super(License, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._description = None

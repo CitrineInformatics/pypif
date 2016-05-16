@@ -10,7 +10,7 @@ class Reference(Pio):
 
     def __init__(self, doi=None, isbn=None, issn=None, url=None, title=None, publisher=None, journal=None, volume=None,
                  issue=None, year=None, pages=None, authors=None, editors=None, affiliations=None,
-                 acknowledgements=None, references=None, **kwargs):
+                 acknowledgements=None, references=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -31,9 +31,10 @@ class Reference(Pio):
         :param affiliations: List of strings with affiliations.
         :param acknowledgements: List of strings with acknowledgements.
         :param references: List of dictionaries or :class:`.Reference` objects with works cited by this published work.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Reference, self).__init__(**kwargs)
+        super(Reference, self).__init__(tags=tags, **kwargs)
         self._doi = None
         self.doi = doi
         self._isbn = None

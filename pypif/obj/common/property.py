@@ -9,7 +9,7 @@ class Property(Value, Rcl):
     """
 
     def __init__(self, name=None, scalars=None, vectors=None, matrices=None, units=None, conditions=None, method=None,
-                 data_type=None, references=None, contacts=None, licenses=None, **kwargs):
+                 data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -31,10 +31,11 @@ class Property(Value, Rcl):
                 information about the property.
         :param licenses: List of dictionaries, strings, or :class:`.License` objects with licensing information
                 for the property.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
         super(Property, self).__init__(name=name, scalars=scalars, vectors=vectors, matrices=matrices,
-                                       units=units, **kwargs)
+                                       units=units, tags=tags, **kwargs)
         super(Rcl, self).__init__(references=references, contacts=contacts, licenses=licenses)
         self._conditions = None
         self.conditions = conditions

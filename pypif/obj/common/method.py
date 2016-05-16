@@ -8,7 +8,7 @@ class Method(Pio):
     Information about a method used in obtaining a property value.
     """
 
-    def __init__(self, name=None, instruments=None, software=None, **kwargs):
+    def __init__(self, name=None, instruments=None, software=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -17,7 +17,7 @@ class Method(Pio):
         :param software: List of dictionaries or :class:`.Software` objects used in the method.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Method, self).__init__(**kwargs)
+        super(Method, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._instruments = None

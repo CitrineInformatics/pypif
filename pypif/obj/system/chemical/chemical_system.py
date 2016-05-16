@@ -8,7 +8,8 @@ class ChemicalSystem(System):
     """
 
     def __init__(self, names=None, ids=None, chemical_formula=None, composition=None, properties=None,
-                 preparation=None, sub_systems=None, references=None, contacts=None, licenses=None, **kwargs):
+                 preparation=None, sub_systems=None, references=None, contacts=None, licenses=None, tags=None,
+                 **kwargs):
         """
         Constructor.
 
@@ -27,11 +28,12 @@ class ChemicalSystem(System):
                 information about the system.
         :param licenses: List of dictionaries, strings, or :class:`.License` objects with licensing information
                 for data about the system.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
         super(ChemicalSystem, self).__init__(names=names, ids=ids, properties=properties, preparation=preparation,
                                              sub_systems=sub_systems, references=references, contacts=contacts,
-                                             licenses=licenses, **kwargs)
+                                             licenses=licenses, tags=tags, **kwargs)
         self._chemical_formula = None
         self.chemical_formula = chemical_formula
         self._composition = None

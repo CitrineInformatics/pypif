@@ -6,7 +6,7 @@ class Name(Pio):
     Representation of the first and last name of a person.
     """
 
-    def __init__(self, title=None, given=None, family=None, suffix=None, **kwargs):
+    def __init__(self, title=None, given=None, family=None, suffix=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -14,9 +14,10 @@ class Name(Pio):
         :param given: Given (first) name of a person.
         :param family: Family (last) name of a person.
         :param suffix: Suffix of the person (e.g. Jr. or Sr.)
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Name, self).__init__(**kwargs)
+        super(Name, self).__init__(tags=tags, **kwargs)
         self._title = None
         self.title = title
         self._given = None

@@ -9,7 +9,7 @@ class Scalar(Pio):
     """
 
     def __init__(self, value=None, minimum=None, inclusive_minimum=None, maximum=None, inclusive_maximum=None,
-                 uncertainty=None, approximate=None, **kwargs):
+                 uncertainty=None, approximate=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -20,9 +20,10 @@ class Scalar(Pio):
         :param inclusive_maximum: Boolean with whether the maximum is inclusive.
         :param uncertainty: String or number with the  isotropic uncertainty for the point.
         :param approximate: Boolean with whether the value is approximate.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Scalar, self).__init__(**kwargs)
+        super(Scalar, self).__init__(tags=tags, **kwargs)
         self._value = None
         self.value = value
         self._minimum = None

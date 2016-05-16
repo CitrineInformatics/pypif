@@ -9,7 +9,7 @@ class ProcessStep(Pio):
     Information about a single step in a processing pipeline.
     """
 
-    def __init__(self, name=None, details=None, instruments=None, software=None, **kwargs):
+    def __init__(self, name=None, details=None, instruments=None, software=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -17,9 +17,10 @@ class ProcessStep(Pio):
         :param details: List of dictionaries or :class:`.Value` objects with the details of the step.
         :param instruments: List of dictionaries or :class:`.Instrument` objects.
         :param software: List of dictionaries or :class:`.Software` objects.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(ProcessStep, self).__init__(**kwargs)
+        super(ProcessStep, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._details = None

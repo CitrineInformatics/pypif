@@ -8,7 +8,7 @@ class Value(Pio):
     Information about a scalar, vector, or matrix, or a list of one of those.
     """
 
-    def __init__(self, name=None, scalars=None, vectors=None, matrices=None, units=None, **kwargs):
+    def __init__(self, name=None, scalars=None, vectors=None, matrices=None, units=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -19,9 +19,10 @@ class Value(Pio):
         :param matrices: One of more lists of lists of dictionaries, strings, numbers, or :class:`.Scalar` objects,
                 each representing a matrix with rows as the innermost lists.
         :param units: String with the units of the value.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Value, self).__init__(**kwargs)
+        super(Value, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._scalars = None

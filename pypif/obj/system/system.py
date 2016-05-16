@@ -11,7 +11,7 @@ class System(Rcl):
     """
 
     def __init__(self, names=None, ids=None, properties=None, preparation=None, sub_systems=None, references=None,
-                 contacts=None, licenses=None, **kwargs):
+                 contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -27,9 +27,10 @@ class System(Rcl):
                 information about the system.
         :param licenses: List of dictionaries, strings, or :class:`.License` objects with licensing information
                 for data about the system.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(System, self).__init__(references=references, contacts=contacts, licenses=licenses, **kwargs)
+        super(System, self).__init__(references=references, contacts=contacts, licenses=licenses, tags=tags, **kwargs)
         self._names = None
         self.names = names
         self._ids = None

@@ -1,3 +1,4 @@
+import numbers
 from pypif.util.case import to_camel_case
 from pypif.util.case import keys_to_snake_case
 
@@ -7,14 +8,30 @@ class Pio(object):
     Base class for all physical information objects.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, tags=None, **kwargs):
         """
         Constructor. This is used to set an fields on a pio that do not have first level support.
 
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of field names to values.
         """
+        self._tags = None
+        self.tags = tags
         for i in kwargs.keys():
             setattr(self, i, kwargs[i])
+
+    @property
+    def tags(self):
+        return self._tags
+
+    @tags.setter
+    def tags(self, tags):
+        self._validate_list_type('tags', tags, basestring, numbers.Number)
+        self._tags = tags
+
+    @tags.deleter
+    def tags(self):
+        self._tags = None
 
     def as_pif_dictionary(self):
         """

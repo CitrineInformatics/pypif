@@ -7,15 +7,16 @@ class Id(Pio):
     Information about a generic identifier.
     """
 
-    def __init__(self, name=None, value=None, **kwargs):
+    def __init__(self, name=None, value=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param name: String with the name of the identifier.
         :param value: String or number with the value of the identifier.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Id, self).__init__(**kwargs)
+        super(Id, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
         self._value = None

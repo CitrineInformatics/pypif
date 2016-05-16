@@ -9,7 +9,7 @@ class Rcl(Pio):
     Base class for any objects that contain reference, contact, and license information.
     """
 
-    def __init__(self, references=None, contacts=None, licenses=None, **kwargs):
+    def __init__(self, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -19,9 +19,10 @@ class Rcl(Pio):
                 contacted for information about this item.
         :param licenses: List of dictionaries, strings, or :class:`.License` objects with licensing information
                 for this item.
+        :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Rcl, self).__init__(**kwargs)
+        super(Rcl, self).__init__(tags=tags, **kwargs)
         self._references = None
         self.references = references
         self._contacts = None
