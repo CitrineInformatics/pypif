@@ -45,7 +45,7 @@ class Alloy(ChemicalSystem):
 
     @phases.setter
     def phases(self, phases):
-        self.sub_systems.append(phases)
+        self.sub_systems = phases
 
     @phases.deleter
     def phases(self):
