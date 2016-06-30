@@ -45,20 +45,7 @@ class Alloy(ChemicalSystem):
 
     @phases.setter
     def phases(self, phases):
-        self._validate_list_type('phases', phases, dict, AlloyPhase)
-        phases = self._get_object(AlloyPhase, phases)
-        if isinstance(self._sub_systems, list) and isinstance(phases, list):
-            self._sub_systems.extend(phases)
-        elif isinstance(self._sub_systems, System) and isinstance(phases, list):
-            self._sub_systems = [self._sub_systems] + phases
-        elif isinstance(self._sub_systems, list) and isinstance(phases, System):
-            self._sub_systems = self._sub_systems + [phases]
-        elif isinstance(self._sub_systems, System) and isinstance(phases, System):
-            self._sub_systems = [self._sub_systems, phases]
-        elif self._sub_systems is None:
-            self._sub_systems = phases
-        elif phases is not None:
-            raise RuntimeError('Cannot combine phases')
+        self.sub_systems.append(phases)
 
     @phases.deleter
     def phases(self):
