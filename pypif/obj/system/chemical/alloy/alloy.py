@@ -41,12 +41,7 @@ class Alloy(ChemicalSystem):
 
     @property
     def phases(self):
-        if isinstance(self._sub_systems, AlloyPhase):
-            return self._sub_systems
-        elif isinstance(self._sub_systems, list):
-            return [i for i in self._sub_systems if isinstance(i, AlloyPhase)]
-        else:
-            return None
+        return self._sub_systems
 
     @phases.setter
     def phases(self, phases):
