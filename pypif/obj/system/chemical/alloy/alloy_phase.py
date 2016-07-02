@@ -1,3 +1,4 @@
+from warnings import warn
 from pypif.obj.system.chemical.chemical_system import ChemicalSystem
 
 
@@ -30,6 +31,7 @@ class AlloyPhase(ChemicalSystem):
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
+        warn('AlloyPhase has been deprecated. Use ChemicalSystem instead.')
         super(AlloyPhase, self).__init__(names=names, ids=ids, chemical_formula=chemical_formula,
                                          composition=composition, properties=properties, preparation=preparation,
                                          sub_systems=sub_systems, references=references, contacts=contacts,

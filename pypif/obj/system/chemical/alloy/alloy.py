@@ -1,6 +1,4 @@
-from pypif.obj.system.system import System
 from pypif.obj.system.chemical.chemical_system import ChemicalSystem
-from pypif.obj.system.chemical.alloy.alloy_phase import AlloyPhase
 
 
 class Alloy(ChemicalSystem):
@@ -49,7 +47,4 @@ class Alloy(ChemicalSystem):
 
     @phases.deleter
     def phases(self):
-        if isinstance(self._sub_systems, AlloyPhase):
-            self._sub_systems = None
-        elif isinstance(self._sub_systems, list):
-            self._sub_systems = [i for i in self._sub_systems if not isinstance(i, AlloyPhase)]
+        del self.sub_systems

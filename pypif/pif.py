@@ -79,6 +79,6 @@ def _dict_to_pio(d):
         return ChemicalSystem(**d)
     elif d['category'] == 'system.chemical.alloy':
         return Alloy(**d)
-    elif d['category'] == 'system.chemical.alloy.phase':
-        return AlloyPhase(**d)
+    elif d['category'] == 'system.chemical.alloy.phase':  # Legacy support
+        return ChemicalSystem(**d)
     raise ValueError('Dictionary does not contain a valid top-level category: ' + str(d['category']))
