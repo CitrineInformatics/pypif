@@ -7,15 +7,16 @@ class AlloyPhase(ChemicalSystem):
     Representation of a single phase in an alloy.
     """
 
-    def __init__(self, names=None, ids=None, source=None, chemical_formula=None, composition=None, properties=None,
-                 preparation=None, sub_systems=None, references=None, contacts=None, licenses=None, tags=None,
-                 **kwargs):
+    def __init__(self, names=None, ids=None, source=None, quantity=None, chemical_formula=None, composition=None,
+                 properties=None, preparation=None, sub_systems=None, references=None, contacts=None, licenses=None,
+                 tags=None, **kwargs):
         """
         Constructor.
 
         :param names: List of strings with common names of the alloy phase.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the alloy phase.
         :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
+        :param quantity: Dictionary or :class:`.Quantity` object with the quantity of the system.
         :param chemical_formula: String with the chemical formula.
         :param composition: List of dictionaries or :class:`.Composition` objects that describe the composition of
                 the alloy phase.
@@ -33,8 +34,9 @@ class AlloyPhase(ChemicalSystem):
         :param kwargs: Dictionary of fields that are not supported.
         """
         warn('AlloyPhase is being deprecated. Use ChemicalSystem or a subclass of it instead.')
-        super(AlloyPhase, self).__init__(names=names, ids=ids, source=source, chemical_formula=chemical_formula,
-                                         composition=composition, properties=properties, preparation=preparation,
-                                         sub_systems=sub_systems, references=references, contacts=contacts,
-                                         licenses=licenses, tags=tags, **kwargs)
+        super(AlloyPhase, self).__init__(names=names, ids=ids, source=source, quantity=quantity,
+                                         chemical_formula=chemical_formula, composition=composition,
+                                         properties=properties, preparation=preparation, sub_systems=sub_systems,
+                                         references=references, contacts=contacts, licenses=licenses, tags=tags,
+                                         **kwargs)
         self.category = kwargs['category'] if 'category' in kwargs else 'system.chemical.alloy.phase'
