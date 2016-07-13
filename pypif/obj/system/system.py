@@ -3,6 +3,7 @@ from pypif.obj.common.id import Id
 from pypif.obj.common.process_step import ProcessStep
 from pypif.obj.common.property import Property
 from pypif.obj.common.rcl import Rcl
+from pypif.obj.common.source import Source
 
 
 class System(Rcl):
@@ -10,13 +11,14 @@ class System(Rcl):
     Base representation for all systems.
     """
 
-    def __init__(self, names=None, ids=None, properties=None, preparation=None, sub_systems=None, references=None,
-                 contacts=None, licenses=None, tags=None, **kwargs):
+    def __init__(self, names=None, ids=None, source=None, properties=None, preparation=None, sub_systems=None,
+                 references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param names: List of strings with common names of the system.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
+        :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
         :param properties: List of dictionaries or :class:`.Property` objects with properties of the system.
         :param preparation: List of dictionaries or :class:`.ProcessStep` objects with the preparation
                 information of the system.
@@ -35,6 +37,8 @@ class System(Rcl):
         self.names = names
         self._ids = None
         self.ids = ids
+        self._source = None
+        self.source = source
         self._properties = None
         self.properties = properties
         self._preparation = None
@@ -68,6 +72,19 @@ class System(Rcl):
     @ids.deleter
     def ids(self):
         self._ids = None
+
+    @property
+    def source(self):
+        return self._source
+
+    @source.setter
+    def source(self, source):
+        self._validate_type('source', source, dict, basestring, Source)
+        self._source = self._get_object(Source, source)
+
+    @source.deleter
+    def source(self):
+        self._source = None
 
     @property
     def properties(self):

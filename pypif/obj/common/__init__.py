@@ -9,5 +9,6 @@ from process_step import ProcessStep
 from property import Property
 from reference import Reference
 from scalar import Scalar
+from source import Source
 from software import Software
 from value import Value

@@ -7,7 +7,7 @@ class AlloyPhase(ChemicalSystem):
     Representation of a single phase in an alloy.
     """
 
-    def __init__(self, names=None, ids=None, chemical_formula=None, composition=None, properties=None,
+    def __init__(self, names=None, ids=None, source=None, chemical_formula=None, composition=None, properties=None,
                  preparation=None, sub_systems=None, references=None, contacts=None, licenses=None, tags=None,
                  **kwargs):
         """
@@ -15,6 +15,7 @@ class AlloyPhase(ChemicalSystem):
 
         :param names: List of strings with common names of the alloy phase.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the alloy phase.
+        :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
         :param chemical_formula: String with the chemical formula.
         :param composition: List of dictionaries or :class:`.Composition` objects that describe the composition of
                 the alloy phase.
@@ -31,8 +32,8 @@ class AlloyPhase(ChemicalSystem):
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        warn('AlloyPhase has been deprecated. Use ChemicalSystem instead.')
-        super(AlloyPhase, self).__init__(names=names, ids=ids, chemical_formula=chemical_formula,
+        warn('AlloyPhase is being deprecated. Use ChemicalSystem or a subclass of it instead.')
+        super(AlloyPhase, self).__init__(names=names, ids=ids, source=source, chemical_formula=chemical_formula,
                                          composition=composition, properties=properties, preparation=preparation,
                                          sub_systems=sub_systems, references=references, contacts=contacts,
                                          licenses=licenses, tags=tags, **kwargs)

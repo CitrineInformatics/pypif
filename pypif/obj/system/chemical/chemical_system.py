@@ -7,7 +7,7 @@ class ChemicalSystem(System):
     Representation of a general chemical system.
     """
 
-    def __init__(self, names=None, ids=None, chemical_formula=None, composition=None, properties=None,
+    def __init__(self, names=None, ids=None, source=None, chemical_formula=None, composition=None, properties=None,
                  preparation=None, sub_systems=None, references=None, contacts=None, licenses=None, tags=None,
                  **kwargs):
         """
@@ -15,6 +15,7 @@ class ChemicalSystem(System):
 
         :param names: List of strings with common names of the chemical system.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
+        :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
         :param chemical_formula: String with the chemical formula.
         :param composition: List of dictionaries or :class:`.Composition` objects that describe the composition of
                 the chemical system.
@@ -31,9 +32,9 @@ class ChemicalSystem(System):
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(ChemicalSystem, self).__init__(names=names, ids=ids, properties=properties, preparation=preparation,
-                                             sub_systems=sub_systems, references=references, contacts=contacts,
-                                             licenses=licenses, tags=tags, **kwargs)
+        super(ChemicalSystem, self).__init__(names=names, ids=ids, source=source, properties=properties,
+                                             preparation=preparation, sub_systems=sub_systems, references=references,
+                                             contacts=contacts, licenses=licenses, tags=tags, **kwargs)
         self._chemical_formula = None
         self.chemical_formula = chemical_formula
         self._composition = None
