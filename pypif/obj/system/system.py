@@ -12,11 +12,12 @@ class System(Rcl):
     Base representation for all systems.
     """
 
-    def __init__(self, names=None, ids=None, source=None, quantity=None, properties=None, preparation=None,
+    def __init__(self, uid=None, names=None, ids=None, source=None, quantity=None, properties=None, preparation=None,
                  sub_systems=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
+        :param uid: String with the permanent ID for this record.
         :param names: List of strings with common names of the system.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
         :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
@@ -35,6 +36,8 @@ class System(Rcl):
         :param kwargs: Dictionary of fields that are not supported.
         """
         super(System, self).__init__(references=references, contacts=contacts, licenses=licenses, tags=tags, **kwargs)
+        self._uid = None
+        self.uid = uid
         self._names = None
         self.names = names
         self._ids = None
@@ -50,6 +53,19 @@ class System(Rcl):
         self._sub_systems = None
         self.sub_systems = sub_systems
         self.category = kwargs['category'] if 'category' in kwargs else 'system'
+
+    @property
+    def uid(self):
+        return self._uid
+
+    @uid.setter
+    def uid(self, uid):
+        self._validate_type('uid', uid, basestring)
+        self._uid = uid
+
+    @uid.deleter
+    def uid(self):
+        self._uid = None
 
     @property
     def names(self):
