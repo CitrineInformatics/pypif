@@ -145,4 +145,5 @@ class Pio(object):
             if not isinstance(obj, list):
                 raise TypeError(self.__class__.__name__ + '.' + name + ' contains value of type ' +
                                 type(obj).__name__ + ' where a list is expected')
-            self._validate_nested_list_type(name, obj, nested_level - 1, *args)
+            for sub_obj in obj:
+                self._validate_nested_list_type(name, sub_obj, nested_level - 1, *args)
