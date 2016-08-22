@@ -13,9 +13,7 @@ Tools to serialize and deserialize to and from the [PIF](http://citrine.io/pif) 
 ### Setup
 
 ```shell
-$ git clone git@github.com:CitrineInformatics/pypif.git
-$ cd pypif
-$ python setup.py install
+$ pip install pypif
 ```
 
 ## Example

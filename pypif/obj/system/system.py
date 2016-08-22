@@ -2,7 +2,9 @@ import numbers
 from pypif.obj.common.id import Id
 from pypif.obj.common.process_step import ProcessStep
 from pypif.obj.common.property import Property
+from pypif.obj.common.quantity import Quantity
 from pypif.obj.common.rcl import Rcl
+from pypif.obj.common.source import Source
 
 
 class System(Rcl):
@@ -10,13 +12,16 @@ class System(Rcl):
     Base representation for all systems.
     """
 
-    def __init__(self, names=None, ids=None, properties=None, preparation=None, sub_systems=None, references=None,
-                 contacts=None, licenses=None, tags=None, **kwargs):
+    def __init__(self, uid=None, names=None, ids=None, source=None, quantity=None, properties=None, preparation=None,
+                 sub_systems=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
+        :param uid: String with the permanent ID for this record.
         :param names: List of strings with common names of the system.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
+        :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
+        :param quantity: Dictionary or :class:`.Quantity` object with the quantity of the system.
         :param properties: List of dictionaries or :class:`.Property` objects with properties of the system.
         :param preparation: List of dictionaries or :class:`.ProcessStep` objects with the preparation
                 information of the system.
@@ -31,10 +36,16 @@ class System(Rcl):
         :param kwargs: Dictionary of fields that are not supported.
         """
         super(System, self).__init__(references=references, contacts=contacts, licenses=licenses, tags=tags, **kwargs)
+        self._uid = None
+        self.uid = uid
         self._names = None
         self.names = names
         self._ids = None
         self.ids = ids
+        self._source = None
+        self.source = source
+        self._quantity = None
+        self.quantity = quantity
         self._properties = None
         self.properties = properties
         self._preparation = None
@@ -42,6 +53,19 @@ class System(Rcl):
         self._sub_systems = None
         self.sub_systems = sub_systems
         self.category = kwargs['category'] if 'category' in kwargs else 'system'
+
+    @property
+    def uid(self):
+        return self._uid
+
+    @uid.setter
+    def uid(self, uid):
+        self._validate_type('uid', uid, basestring)
+        self._uid = uid
+
+    @uid.deleter
+    def uid(self):
+        self._uid = None
 
     @property
     def names(self):
@@ -68,6 +92,32 @@ class System(Rcl):
     @ids.deleter
     def ids(self):
         self._ids = None
+
+    @property
+    def source(self):
+        return self._source
+
+    @source.setter
+    def source(self, source):
+        self._validate_type('source', source, dict, basestring, Source)
+        self._source = self._get_object(Source, source)
+
+    @property
+    def quantity(self):
+        return self._quantity
+
+    @quantity.setter
+    def quantity(self, quantity):
+        self._validate_type('quantity', quantity, dict, Quantity)
+        self._quantity = self._get_object(Quantity, quantity)
+
+    @quantity.deleter
+    def quantity(self):
+        self._quantity = None
+
+    @source.deleter
+    def source(self):
+        self._source = None
 
     @property
     def properties(self):
