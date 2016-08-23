@@ -54,7 +54,7 @@ class Scalar(Pio):
 
     @property
     def minimum(self):
-        return self.minimum
+        return self._minimum
 
     @minimum.setter
     def minimum(self, minimum):
@@ -80,7 +80,7 @@ class Scalar(Pio):
 
     @property
     def maximum(self):
-        return self.maximum
+        return self._maximum
 
     @maximum.setter
     def maximum(self, maximum):
@@ -106,7 +106,7 @@ class Scalar(Pio):
 
     @property
     def uncertainty(self):
-        return self.uncertainty
+        return self._uncertainty
 
     @uncertainty.setter
     def uncertainty(self, uncertainty):
