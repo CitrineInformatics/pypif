@@ -17,6 +17,6 @@ class PifEncoder(json.JSONEncoder):
         if obj is None:
             return []
         elif isinstance(obj, list):
-            return [i.as_pif_dictionary() for i in obj]
+            return [i.as_dictionary() for i in obj]
         else:
-            return obj.as_pif_dictionary()
+            return obj.as_dictionary()
