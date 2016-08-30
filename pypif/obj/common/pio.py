@@ -1,5 +1,4 @@
 import numbers
-from pypif.util.case import keys_to_snake_case
 from pypif.util.serializable import Serializable
 
 
@@ -32,22 +31,6 @@ class Pio(Serializable):
     @tags.deleter
     def tags(self):
         self._tags = None
-
-    @staticmethod
-    def _get_object(class_, obj):
-        """
-        Helper function that returns an object, or if it is a dictionary, initializes it from class_.
-
-        :param class_: Class to use to instantiate object.
-        :param obj: Object to process.
-        :return: One or more objects.
-        """
-        if isinstance(obj, list):
-            return [Pio._get_object(class_, i) for i in obj]
-        elif isinstance(obj, dict):
-            return class_(**keys_to_snake_case(obj))
-        else:
-            return obj
 
     def _validate_type(self, name, obj, *args):
         """
