@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.method import Method
 from pypif.obj.common.rcl import Rcl
 from pypif.obj.common.value import Value
@@ -76,7 +77,7 @@ class Property(Value, Rcl):
 
     @data_type.setter
     def data_type(self, data_type):
-        self._validate_type('data_type', data_type, basestring)
+        self._validate_type('data_type', data_type, string_types)
         self._data_type = data_type
 
     @data_type.deleter

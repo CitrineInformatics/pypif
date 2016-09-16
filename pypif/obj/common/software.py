@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -33,7 +34,7 @@ class Software(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, basestring)
+        self._validate_type('name', name, string_types)
         self._name = name
 
     @name.deleter
@@ -46,7 +47,7 @@ class Software(Pio):
 
     @version.setter
     def version(self, version):
-        self._validate_type('version', version, basestring)
+        self._validate_type('version', version, string_types)
         self._version = version
 
     @version.deleter
@@ -59,7 +60,7 @@ class Software(Pio):
 
     @producer.setter
     def producer(self, producer):
-        self._validate_type('producer', producer, basestring)
+        self._validate_type('producer', producer, string_types)
         self._producer = producer
 
     @producer.deleter
@@ -72,7 +73,7 @@ class Software(Pio):
 
     @url.setter
     def url(self, url):
-        self._validate_type('url', url, basestring)
+        self._validate_type('url', url, string_types)
         self._url = url
 
     @url.deleter

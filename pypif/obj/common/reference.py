@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.name import Name
 from pypif.obj.common.pages import Pages
 from pypif.obj.common.pio import Pio
@@ -74,7 +75,7 @@ class Reference(Pio):
 
     @doi.setter
     def doi(self, doi):
-        self._validate_type('doi', doi, basestring)
+        self._validate_type('doi', doi, string_types)
         self._doi = doi
 
     @doi.deleter
@@ -87,7 +88,7 @@ class Reference(Pio):
 
     @isbn.setter
     def isbn(self, isbn):
-        self._validate_type('isbn', isbn, basestring)
+        self._validate_type('isbn', isbn, string_types)
         self._isbn = isbn
 
     @isbn.deleter
@@ -100,7 +101,7 @@ class Reference(Pio):
 
     @issn.setter
     def issn(self, issn):
-        self._validate_type('issn', issn, basestring)
+        self._validate_type('issn', issn, string_types)
         self._issn = issn
 
     @issn.deleter
@@ -113,7 +114,7 @@ class Reference(Pio):
 
     @url.setter
     def url(self, url):
-        self._validate_type('url', url, basestring)
+        self._validate_type('url', url, string_types)
         self._url = url
 
     @url.deleter
@@ -126,7 +127,7 @@ class Reference(Pio):
 
     @title.setter
     def title(self, title):
-        self._validate_type('title', title, basestring)
+        self._validate_type('title', title, string_types)
         self._title = title
 
     @title.deleter
@@ -139,7 +140,7 @@ class Reference(Pio):
 
     @publisher.setter
     def publisher(self, publisher):
-        self._validate_type('publisher', publisher, basestring)
+        self._validate_type('publisher', publisher, string_types)
         self._publisher = publisher
 
     @publisher.deleter
@@ -152,7 +153,7 @@ class Reference(Pio):
 
     @journal.setter
     def journal(self, journal):
-        self._validate_type('journal', journal, basestring)
+        self._validate_type('journal', journal, string_types)
         self._journal = journal
 
     @journal.deleter
@@ -165,7 +166,7 @@ class Reference(Pio):
 
     @volume.setter
     def volume(self, volume):
-        self._validate_type('volume', volume, basestring)
+        self._validate_type('volume', volume, string_types)
         self._volume = volume
 
     @volume.deleter
@@ -178,7 +179,7 @@ class Reference(Pio):
 
     @issue.setter
     def issue(self, issue):
-        self._validate_type('issue', issue, basestring)
+        self._validate_type('issue', issue, string_types)
         self._issue = issue
 
     @issue.deleter
@@ -191,7 +192,7 @@ class Reference(Pio):
 
     @year.setter
     def year(self, year):
-        self._validate_type('year', year, basestring)
+        self._validate_type('year', year, string_types)
         self._year = year
 
     @year.deleter
@@ -204,7 +205,7 @@ class Reference(Pio):
 
     @pages.setter
     def pages(self, pages):
-        self._validate_type('pages', pages, basestring, int, dict, Pages)
+        self._validate_type('pages', pages, string_types, int, dict, Pages)
         self._pages = self._get_object(Pages, pages)
 
     @pages.deleter
@@ -217,7 +218,7 @@ class Reference(Pio):
 
     @authors.setter
     def authors(self, authors):
-        self._validate_list_type('authors', authors, basestring, dict, Name)
+        self._validate_list_type('authors', authors, string_types, dict, Name)
         self._authors = self._get_object(Name, authors)
 
     @authors.deleter
@@ -230,7 +231,7 @@ class Reference(Pio):
 
     @editors.setter
     def editors(self, editors):
-        self._validate_list_type('editors', editors, basestring, dict, Name)
+        self._validate_list_type('editors', editors, string_types, dict, Name)
         self._editors = self._get_object(Name, editors)
 
     @editors.deleter
@@ -243,7 +244,7 @@ class Reference(Pio):
 
     @affiliations.setter
     def affiliations(self, affiliations):
-        self._validate_list_type('affiliations', affiliations, basestring)
+        self._validate_list_type('affiliations', affiliations, string_types)
         self._affiliations = affiliations
 
     @affiliations.deleter
@@ -256,7 +257,7 @@ class Reference(Pio):
 
     @acknowledgements.setter
     def acknowledgements(self, acknowledgements):
-        self._validate_list_type('acknowledgements', acknowledgements, basestring)
+        self._validate_list_type('acknowledgements', acknowledgements, string_types)
         self._acknowledgements = acknowledgements
 
     @acknowledgements.deleter

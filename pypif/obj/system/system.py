@@ -1,4 +1,5 @@
 import numbers
+from six import string_types
 from pypif.obj.common.id import Id
 from pypif.obj.common.process_step import ProcessStep
 from pypif.obj.common.property import Property
@@ -60,7 +61,7 @@ class System(Rcl):
 
     @uid.setter
     def uid(self, uid):
-        self._validate_type('uid', uid, basestring)
+        self._validate_type('uid', uid, string_types)
         self._uid = uid
 
     @uid.deleter
@@ -73,7 +74,7 @@ class System(Rcl):
 
     @names.setter
     def names(self, names):
-        self._validate_list_type('names', names, basestring)
+        self._validate_list_type('names', names, string_types)
         self._names = names
 
     @names.deleter
@@ -86,7 +87,7 @@ class System(Rcl):
 
     @ids.setter
     def ids(self, ids):
-        self._validate_list_type('ids', ids, dict, basestring, numbers.Number, Id)
+        self._validate_list_type('ids', ids, dict, string_types, numbers.Number, Id)
         self._ids = self._get_object(Id, ids)
 
     @ids.deleter
@@ -99,7 +100,7 @@ class System(Rcl):
 
     @source.setter
     def source(self, source):
-        self._validate_type('source', source, dict, basestring, Source)
+        self._validate_type('source', source, dict, string_types, Source)
         self._source = self._get_object(Source, source)
 
     @property

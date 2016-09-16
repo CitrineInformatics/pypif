@@ -1,4 +1,5 @@
 import numbers
+from six import string_types
 from pypif.obj.common.pio import Pio
 from pypif.obj.common.scalar import Scalar
 
@@ -40,7 +41,7 @@ class Value(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, basestring)
+        self._validate_type('name', name, string_types)
         self._name = name
 
     @name.deleter
@@ -53,7 +54,7 @@ class Value(Pio):
 
     @scalars.setter
     def scalars(self, scalars):
-        self._validate_list_type('scalars', scalars, dict, basestring, numbers.Number, Scalar)
+        self._validate_list_type('scalars', scalars, dict, string_types, numbers.Number, Scalar)
         self._scalars = self._get_object(Scalar, scalars)
 
     @scalars.deleter
@@ -66,7 +67,7 @@ class Value(Pio):
 
     @vectors.setter
     def vectors(self, vectors):
-        self._validate_nested_list_type('vectors', vectors, 2, dict, basestring, numbers.Number, Scalar)
+        self._validate_nested_list_type('vectors', vectors, 2, dict, string_types, numbers.Number, Scalar)
         self._vectors = self._get_object(Scalar, vectors)
 
     @vectors.deleter
@@ -79,7 +80,7 @@ class Value(Pio):
 
     @matrices.setter
     def matrices(self, matrices):
-        self._validate_nested_list_type('matrices', matrices, 3, dict, basestring, numbers.Number, Scalar)
+        self._validate_nested_list_type('matrices', matrices, 3, dict, string_types, numbers.Number, Scalar)
         self._matrices = self._get_object(Scalar, matrices)
 
     @matrices.deleter
@@ -92,7 +93,7 @@ class Value(Pio):
 
     @units.setter
     def units(self, units):
-        self._validate_type('units', units, basestring)
+        self._validate_type('units', units, string_types)
         self._units = units
 
     @units.deleter

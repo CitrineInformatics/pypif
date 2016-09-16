@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.license import License
 from pypif.obj.common.person import Person
 from pypif.obj.common.pio import Pio
@@ -49,7 +50,7 @@ class Rcl(Pio):
 
     @contacts.setter
     def contacts(self, contacts):
-        self._validate_list_type('contacts', contacts, dict, basestring, Person)
+        self._validate_list_type('contacts', contacts, dict, string_types, Person)
         self._contacts = self._get_object(Person, contacts)
 
     @contacts.deleter
@@ -62,7 +63,7 @@ class Rcl(Pio):
 
     @licenses.setter
     def licenses(self, licenses):
-        self._validate_list_type('licenses', licenses, dict, basestring, License)
+        self._validate_list_type('licenses', licenses, dict, string_types, License)
         self._licenses = self._get_object(License, licenses)
 
     @licenses.deleter

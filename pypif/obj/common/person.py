@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.name import Name
 from pypif.obj.common.pio import Pio
 
@@ -44,7 +45,7 @@ class Person(Pio):
 
     @email.setter
     def email(self, email):
-        self._validate_type('email', email, basestring)
+        self._validate_type('email', email, string_types)
         self._email = email
 
     @email.deleter
@@ -57,7 +58,7 @@ class Person(Pio):
 
     @orcid.setter
     def orcid(self, orcid):
-        self._validate_type('orcid', orcid, basestring)
+        self._validate_type('orcid', orcid, string_types)
         self._orcid = orcid
 
     @orcid.deleter

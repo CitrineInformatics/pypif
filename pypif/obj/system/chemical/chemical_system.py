@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.system.system import System
 from pypif.obj.system.chemical.common.composition import Composition
 
@@ -50,7 +51,7 @@ class ChemicalSystem(System):
 
     @chemical_formula.setter
     def chemical_formula(self, chemical_formula):
-        self._validate_type('chemical_formula', chemical_formula, basestring)
+        self._validate_type('chemical_formula', chemical_formula, string_types)
         self._chemical_formula = chemical_formula
 
     @chemical_formula.deleter

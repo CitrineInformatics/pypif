@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -27,7 +28,7 @@ class Source(Pio):
 
     @producer.setter
     def producer(self, producer):
-        self._validate_type('producer', producer, basestring)
+        self._validate_type('producer', producer, string_types)
         self._producer = producer
 
     @producer.deleter
@@ -40,7 +41,7 @@ class Source(Pio):
 
     @url.setter
     def url(self, url):
-        self._validate_type('url', url, basestring)
+        self._validate_type('url', url, string_types)
         self._url = url
 
     @url.deleter

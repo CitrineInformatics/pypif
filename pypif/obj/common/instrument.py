@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -33,7 +34,7 @@ class Instrument(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, basestring)
+        self._validate_type('name', name, string_types)
         self._name = name
 
     @name.deleter
@@ -46,7 +47,7 @@ class Instrument(Pio):
 
     @model.setter
     def model(self, model):
-        self._validate_type('model', model, basestring)
+        self._validate_type('model', model, string_types)
         self._model = model
 
     @model.deleter
@@ -59,7 +60,7 @@ class Instrument(Pio):
 
     @producer.setter
     def producer(self, producer):
-        self._validate_type('producer', producer, basestring)
+        self._validate_type('producer', producer, string_types)
         self._producer = producer
 
     @producer.deleter
@@ -72,7 +73,7 @@ class Instrument(Pio):
 
     @url.setter
     def url(self, url):
-        self._validate_type('url', url, basestring)
+        self._validate_type('url', url, string_types)
         self._url = url
 
     @url.deleter

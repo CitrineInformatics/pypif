@@ -1,4 +1,5 @@
 import numbers
+from six import string_types
 from pypif.util.serializable import Serializable
 
 
@@ -25,7 +26,7 @@ class Pio(Serializable):
 
     @tags.setter
     def tags(self, tags):
-        self._validate_list_type('tags', tags, basestring, numbers.Number)
+        self._validate_list_type('tags', tags, string_types, numbers.Number)
         self._tags = tags
 
     @tags.deleter

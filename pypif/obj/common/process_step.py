@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 from pypif.obj.common.value import Value
 from pypif.obj.common.software import Software
@@ -36,7 +37,7 @@ class ProcessStep(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, basestring)
+        self._validate_type('name', name, string_types)
         self._name = name
 
     @name.deleter
