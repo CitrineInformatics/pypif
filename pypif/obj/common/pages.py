@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -27,7 +28,7 @@ class Pages(Pio):
 
     @start.setter
     def start(self, start):
-        self._validate_type('start', start, basestring, int)
+        self._validate_type('start', start, string_types, int)
         self._start = start
 
     @start.deleter
@@ -40,7 +41,7 @@ class Pages(Pio):
 
     @end.setter
     def end(self, end):
-        self._validate_type('end', end, basestring, int)
+        self._validate_type('end', end, string_types, int)
         self._end = end
 
     @end.deleter

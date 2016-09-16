@@ -1,4 +1,5 @@
 import numbers
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -45,7 +46,7 @@ class Scalar(Pio):
 
     @value.setter
     def value(self, value):
-        self._validate_type('value', value, basestring, numbers.Number)
+        self._validate_type('value', value, string_types, numbers.Number)
         self._value = value
 
     @value.deleter
@@ -58,7 +59,7 @@ class Scalar(Pio):
 
     @minimum.setter
     def minimum(self, minimum):
-        self._validate_type('minimum', minimum, basestring, numbers.Number)
+        self._validate_type('minimum', minimum, string_types, numbers.Number)
         self._minimum = minimum
 
     @minimum.deleter
@@ -84,7 +85,7 @@ class Scalar(Pio):
 
     @maximum.setter
     def maximum(self, maximum):
-        self._validate_type('maximum', maximum, basestring, numbers.Number)
+        self._validate_type('maximum', maximum, string_types, numbers.Number)
         self._maximum = maximum
 
     @maximum.deleter
@@ -110,7 +111,7 @@ class Scalar(Pio):
 
     @uncertainty.setter
     def uncertainty(self, uncertainty):
-        self._validate_type('uncertainty', uncertainty, basestring, numbers.Number)
+        self._validate_type('uncertainty', uncertainty, string_types, numbers.Number)
         self._uncertainty = uncertainty
 
     @uncertainty.deleter

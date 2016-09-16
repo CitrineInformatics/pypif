@@ -1,4 +1,5 @@
 import numbers
+from six import string_types
 from pypif.obj.common.pio import Pio
 from pypif.obj.common.scalar import Scalar
 
@@ -43,7 +44,7 @@ class Composition(Pio):
 
     @element.setter
     def element(self, element):
-        self._validate_type('element', element, basestring)
+        self._validate_type('element', element, string_types)
         self._element = element
 
     @element.deleter
@@ -56,7 +57,7 @@ class Composition(Pio):
         
     @actual_weight_percent.setter
     def actual_weight_percent(self, actual_weight_percent):
-        self._validate_type('actual_weight_percent', actual_weight_percent, dict, basestring,
+        self._validate_type('actual_weight_percent', actual_weight_percent, dict, string_types,
                             numbers.Number, Scalar)
         self._actual_weight_percent = self._get_object(Scalar, actual_weight_percent)
     
@@ -70,7 +71,7 @@ class Composition(Pio):
         
     @actual_atomic_percent.setter
     def actual_atomic_percent(self, actual_atomic_percent):
-        self._validate_type('actual_atomic_percent', actual_atomic_percent, dict, basestring,
+        self._validate_type('actual_atomic_percent', actual_atomic_percent, dict, string_types,
                             numbers.Number, Scalar)
         self._actual_atomic_percent = self._get_object(Scalar, actual_atomic_percent)
     
@@ -84,7 +85,7 @@ class Composition(Pio):
         
     @ideal_weight_percent.setter
     def ideal_weight_percent(self, ideal_weight_percent):
-        self._validate_type('ideal_weight_percent', ideal_weight_percent, dict, basestring,
+        self._validate_type('ideal_weight_percent', ideal_weight_percent, dict, string_types,
                             numbers.Number, Scalar)
         self._ideal_weight_percent = self._get_object(Scalar, ideal_weight_percent)
     
@@ -98,7 +99,7 @@ class Composition(Pio):
         
     @ideal_atomic_percent.setter
     def ideal_atomic_percent(self, ideal_atomic_percent):
-        self._validate_type('ideal_atomic_percent', ideal_atomic_percent, dict, basestring,
+        self._validate_type('ideal_atomic_percent', ideal_atomic_percent, dict, string_types,
                             numbers.Number, Scalar)
         self._ideal_atomic_percent = self._get_object(Scalar, ideal_atomic_percent)
     

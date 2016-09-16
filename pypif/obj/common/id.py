@@ -1,4 +1,5 @@
 import numbers
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -28,7 +29,7 @@ class Id(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, basestring)
+        self._validate_type('name', name, string_types)
         self._name = name
 
     @name.deleter
@@ -41,7 +42,7 @@ class Id(Pio):
 
     @value.setter
     def value(self, value):
-        self._validate_list_type('value', value, basestring, numbers.Number)
+        self._validate_list_type('value', value, string_types, numbers.Number)
         self._value = value
 
     @value.deleter

@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -33,7 +34,7 @@ class Name(Pio):
 
     @title.setter
     def title(self, title):
-        self._validate_type('title', title, basestring)
+        self._validate_type('title', title, string_types)
         self._title = title
 
     @title.deleter
@@ -46,7 +47,7 @@ class Name(Pio):
 
     @given.setter
     def given(self, given):
-        self._validate_type('given', given, basestring)
+        self._validate_type('given', given, string_types)
         self._given = given
 
     @given.deleter
@@ -59,7 +60,7 @@ class Name(Pio):
 
     @family.setter
     def family(self, family):
-        self._validate_type('family', family, basestring)
+        self._validate_type('family', family, string_types)
         self._family = family
 
     @family.deleter
@@ -72,7 +73,7 @@ class Name(Pio):
 
     @suffix.setter
     def suffix(self, suffix):
-        self._validate_type('suffix', suffix, basestring)
+        self._validate_type('suffix', suffix, string_types)
         self._suffix = suffix
 
     @suffix.deleter

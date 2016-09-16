@@ -1,3 +1,4 @@
+from six import string_types
 from pypif.obj.common.pio import Pio
 
 
@@ -30,7 +31,7 @@ class License(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, basestring)
+        self._validate_type('name', name, string_types)
         self._name = name
 
     @name.deleter
@@ -43,7 +44,7 @@ class License(Pio):
 
     @description.setter
     def description(self, description):
-        self._validate_type('description', description, basestring)
+        self._validate_type('description', description, string_types)
         self._description = description
 
     @description.deleter
@@ -56,7 +57,7 @@ class License(Pio):
 
     @url.setter
     def url(self, url):
-        self._validate_type('url', url, basestring)
+        self._validate_type('url', url, string_types)
         self._url = url
 
     @url.deleter
