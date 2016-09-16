@@ -1,3 +1,3 @@
-from alloy import *
-from common import *
-from chemical_system import ChemicalSystem
+from pypif.obj.system.chemical.alloy import *
+from pypif.obj.system.chemical.common import *
+from pypif.obj.system.chemical.chemical_system import ChemicalSystem

@@ -1,2 +1,2 @@
-from chemical import *
-from system import System
+from pypif.obj.system.chemical import *
+from pypif.obj.system.system import System
