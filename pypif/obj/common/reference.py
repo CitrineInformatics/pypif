@@ -1,4 +1,5 @@
 from six import string_types
+from pypif.obj.common.display_item import DisplayItem
 from pypif.obj.common.name import Name
 from pypif.obj.common.pages import Pages
 from pypif.obj.common.pio import Pio
@@ -10,8 +11,8 @@ class Reference(Pio):
     """
 
     def __init__(self, doi=None, isbn=None, issn=None, url=None, title=None, publisher=None, journal=None, volume=None,
-                 issue=None, year=None, pages=None, authors=None, editors=None, affiliations=None,
-                 acknowledgements=None, references=None, tags=None, **kwargs):
+                 issue=None, year=None, figure=None, table=None, pages=None, authors=None, editors=None,
+                 affiliations=None, acknowledgements=None, references=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -25,6 +26,8 @@ class Reference(Pio):
         :param volume: String with the volume in which the work was published.
         :param issue: String with the issue in which the work was published.
         :param year: String with the year in which the work was published.
+        :param figure: Dictionary or :class:`.DisplayItem` object with the figure to reference.
+        :param table: Dictionary or :class:`.DisplayItem` object with the table to reference.
         :param pages: String, integer, dictionary, or :class:`.Pages` object with the starting and ending pages for
                 the published work.
         :param authors: List of strings, dictionaries, or :class:`.Name` objects with information about the authors.
@@ -56,6 +59,10 @@ class Reference(Pio):
         self.issue = issue
         self._year = None
         self.year = year
+        self._figure = None
+        self.figure = figure
+        self._table = None
+        self.table = table
         self._pages = None
         self.pages = pages
         self._authors = None
@@ -198,6 +205,32 @@ class Reference(Pio):
     @year.deleter
     def year(self):
         self._year = None
+
+    @property
+    def figure(self):
+        return self._pages
+
+    @figure.setter
+    def figure(self, figure):
+        self._validate_type('figure', figure, dict, DisplayItem)
+        self._figure = self._get_object(DisplayItem, figure)
+
+    @figure.deleter
+    def figure(self):
+        self._figure = None
+
+    @property
+    def table(self):
+        return self._table
+
+    @table.setter
+    def table(self, table):
+        self._validate_type('table', table, dict, DisplayItem)
+        self._table = self._get_object(DisplayItem, table)
+
+    @table.deleter
+    def table(self):
+        self._table = None
 
     @property
     def pages(self):
