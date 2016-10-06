@@ -208,7 +208,7 @@ class Reference(Pio):
 
     @property
     def figure(self):
-        return self._pages
+        return self._figure
 
     @figure.setter
     def figure(self, figure):
