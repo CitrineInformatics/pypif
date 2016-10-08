@@ -35,9 +35,11 @@ class Property(Value, Rcl):
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(Property, self).__init__(name=name, scalars=scalars, vectors=vectors, matrices=matrices,
-                                       units=units, tags=tags, **kwargs)
-        super(Rcl, self).__init__(references=references, contacts=contacts, licenses=licenses)
+        # The order of the constructors is important here. The second constructor could overwrite values set during
+        # the first if there is overlap.
+        Rcl.__init__(self, references=references, contacts=contacts, licenses=licenses)
+        Value.__init__(self, name=name, scalars=scalars, vectors=vectors, matrices=matrices,
+                       units=units, tags=tags, **kwargs)
         self._conditions = None
         self.conditions = conditions
         self._method = None
