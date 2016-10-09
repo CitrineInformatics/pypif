@@ -49,4 +49,4 @@ def keys_to_snake_case(camel_case_dict):
 
     :return: Dictionary with the keys converted to snake case.
     """
-    return dict((to_snake_case(key), value) for (key, value) in camel_case_dict.iteritems())
+    return dict((to_snake_case(key), value) for (key, value) in camel_case_dict.items())
