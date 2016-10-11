@@ -49,8 +49,7 @@ class Pio(Serializable):
             if isinstance(obj, arg):
                 return
         raise TypeError(self.__class__.__name__ + '.' + name + ' is of type ' + type(obj).__name__ +
-                        '. Must be equal to None or one of the following types: ' +
-                        ', '.join([arg.__name__ for arg in args]))
+                        '. Must be equal to None or one of the following types: ' + str(args))
 
     def _validate_type_not_null(self, name, obj, *args):
         """
@@ -65,8 +64,7 @@ class Pio(Serializable):
             if isinstance(obj, arg):
                 return
         raise TypeError(self.__class__.__name__ + '.' + name + ' is of type ' + type(obj).__name__ +
-                        '. Must be one of the following types [' +
-                        ', '.join([arg.__name__ for arg in args]) + ']')
+                        '. Must be one of the following types: ' + str(args))
 
     def _validate_list_type(self, name, obj, *args):
         """
