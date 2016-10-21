@@ -77,7 +77,7 @@ def _dict_to_pio(d):
         return System(**d)
     elif d['category'] == 'system.chemical':
         return ChemicalSystem(**d)
-    elif d['category'] == 'system.chemical.alloy':
+    elif d['category'] == 'system.chemical.alloy':  # Legacy support
         return Alloy(**d)
     elif d['category'] == 'system.chemical.alloy.phase':  # Legacy support
         return ChemicalSystem(**d)
