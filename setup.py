@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='pypif',
-      version='1.0.19',
+      version='1.0.20',
       url='http://github.com/CitrineInformatics/pypif',
       description='Python tools for working with the Physical Information File (PIF)',
       author='Kyle Michel',

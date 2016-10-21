@@ -1,3 +1,4 @@
+from warnings import warn
 from pypif.obj.system.chemical.chemical_system import ChemicalSystem
 
 
@@ -34,11 +35,13 @@ class Alloy(ChemicalSystem):
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
+        warn('AlloyPhase is being deprecated. Use ChemicalSystem or a subclass of it instead.')
+        if phases is not None and sub_systems is None:
+            sub_systems = phases
         super(Alloy, self).__init__(uid=uid, names=names, ids=ids, source=source, quantity=quantity,
                                     chemical_formula=chemical_formula, composition=composition, properties=properties,
                                     preparation=preparation, sub_systems=sub_systems, references=references,
                                     contacts=contacts, licenses=licenses, tags=tags, **kwargs)
-        self.phases = phases
         self.category = kwargs['category'] if 'category' in kwargs else 'system.chemical.alloy'
 
     @property
