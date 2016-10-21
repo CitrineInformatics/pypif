@@ -37,9 +37,11 @@ class Property(Value, Rcl):
         """
         # The order of the constructors is important here. The second constructor could overwrite values set during
         # the first if there is overlap.
-        Rcl.__init__(self, references=references, contacts=contacts, licenses=licenses)
         Value.__init__(self, name=name, scalars=scalars, vectors=vectors, matrices=matrices,
                        units=units, tags=tags, **kwargs)
+        self.references = references
+        self.contacts = contacts
+        self.licenses = licenses
         self._conditions = None
         self.conditions = conditions
         self._method = None
