@@ -9,18 +9,18 @@ class SystemStats(Stats):
     Class to store stats of a single system.
     """
 
-    def __init__(self, count=None, names=None, chemicalFormula=None, properties=None):
+    def __init__(self, count=None, names=None, chemical_formula=None, properties=None):
         """
         Constructor.
 
         :param count: Number of systems of this type.
         :param names: Dictionary or :class:`.FieldStats` object with stats of the system names.
-        :param chemicalFormula: Dictionary or :class:`.FieldStats` object with stats of the system chemical formula.
+        :param chemical_formula: Dictionary or :class:`.FieldStats` object with stats of the system chemical formula.
         :param properties: Dictionary or :class:`.PropertyStatsWrapper` object with stats of the system properties.
         """
         super(SystemStats, self).__init__(count=count)
         self.names = self._get_object(FieldStats, names)
-        self.chemicalFormula = self._get_object(FieldStats, chemicalFormula)
+        self.chemical_formula = self._get_object(FieldStats, chemical_formula)
         self.properties = self._get_object(PropertyStatsWrapper, properties)
 
 
