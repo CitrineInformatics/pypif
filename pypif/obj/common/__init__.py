@@ -1,6 +1,7 @@
 from pypif.obj.common.display_item import DisplayItem
 from pypif.obj.common.id import Id
 from pypif.obj.common.instrument import Instrument
+from pypif.obj.common.file_reference import FileReference
 from pypif.obj.common.license import License
 from pypif.obj.common.method import Method
 from pypif.obj.common.name import Name
