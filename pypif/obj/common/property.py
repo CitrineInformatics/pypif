@@ -1,4 +1,5 @@
 from six import string_types
+from pypif.obj.common.file_reference import FileReference
 from pypif.obj.common.method import Method
 from pypif.obj.common.rcl import Rcl
 from pypif.obj.common.value import Value
@@ -9,8 +10,8 @@ class Property(Value, Rcl):
     Class to store information about a property and conditions under which it exists.
     """
 
-    def __init__(self, name=None, scalars=None, vectors=None, matrices=None, units=None, conditions=None, method=None,
-                 data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
+    def __init__(self, name=None, scalars=None, vectors=None, matrices=None, files=None, units=None, conditions=None,
+                 method=None, data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -20,6 +21,7 @@ class Property(Value, Rcl):
                 each representing a vector.
         :param matrices: One of more lists of lists of dictionaries, strings, numbers, or :class:`.Scalar` objects,
                 each representing a matrix with rows as the innermost lists.
+        :param files: One of more dictionaries, strings, or :class:`.FileReference` objects.
         :param units: String with the units of the property.
         :param conditions: List of dictionaries or :class:`.Value` objects with the conditions at which the
                 property exists.
@@ -42,12 +44,27 @@ class Property(Value, Rcl):
         self.references = references
         self.contacts = contacts
         self.licenses = licenses
+        self._files = None
+        self.files = files
         self._conditions = None
         self.conditions = conditions
         self._method = None
         self.method = method
         self._data_type = None
         self.data_type = data_type
+
+    @property
+    def files(self):
+        return self._files
+
+    @files.setter
+    def files(self, files):
+        self._validate_list_type('files', files, dict, FileReference)
+        self._files = files
+
+    @files.deleter
+    def files(self):
+        self._files = None
 
     @property
     def conditions(self):
