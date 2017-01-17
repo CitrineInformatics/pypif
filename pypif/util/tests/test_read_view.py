@@ -23,5 +23,7 @@ def test_nested_read_view():
     assert r.sub_systems["10245"].names == pif.names
     assert r.sub_systems["10245"].properties["foo"].scalars == 1.0
     assert r.sub_systems["10245"].properties["bar"].scalars == 2.0
+    assert r["foo"].scalars == 1.0
+    assert r["bar"].scalars == 2.0
 
 
