@@ -51,3 +51,15 @@ def test_ambiguity():
     assert "foo" not in r.keys()
     assert r.sub_systems["10245"]["foo"].scalars == 1.0
     assert r["bar"].scalars == 2.0
+
+
+def test_multiple_instances():
+    """Test that keys that show up in different places with the same value are kept"""
+    pif = System()
+    pif.uid = "10245"
+    pif.properties = [Property(name="foo", scalars=1.0), Property(name="bar", scalars=2.0)]
+    pif2 = System(sub_systems = [pif,], properties=[Property(name="bar", scalars=2.0)])
+    r = ReadView(pif2)
+    assert r.properties["bar"].scalars == 2.0
+    assert r.sub_systems["10245"].properties["bar"].scalars == 2.0
+    assert r["bar"].scalars == 2.0

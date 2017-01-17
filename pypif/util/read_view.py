@@ -10,6 +10,7 @@ from pypif.obj.common.source import Source
 from pypif.obj.common.value import Value
 from pypif.obj.common.reference import Reference
 from pypif.obj import System as Subsystem
+from pypif.pif import dumps
 
 
 def new_keypair(key, value, ambig, unambig):
@@ -25,10 +26,10 @@ def new_keypair(key, value, ambig, unambig):
     if key in ambig:
         return
 
-    if key in unambig:
-        ambig.add(key)
-        del unambig[key]
-        return
+    if key in unambig and value != unambig[key]:
+            ambig.add(key)
+            del unambig[key]
+            return
 
     unambig[key] = value
     return
@@ -62,6 +63,8 @@ class ReadView():
 
         :param system: to process into a ReadView; doesn't need to be a system
         """
+
+        self.raw = system
 
         # List of classes to generate an index from
         self.inlines = [
@@ -113,7 +116,7 @@ class ReadView():
                 # Same logic as above, but not wrapped in a list
                 for t, name in self.inlines:
                     if isinstance(getattr(system, k), t):
-                        new_key = getattr(system, k)[name]
+                        new_key = getattr(getattr(system, k), name)
                         new_val = ReadView(getattr(system, k))
                         new_keypair(new_key, new_val, self.ambig, self.unambig)
                         add_child_ambig(new_val.ambig, new_val.unambig, self.ambig, self.unambig)
@@ -130,3 +133,12 @@ class ReadView():
         if key not in self.unambig:
             raise KeyError(key + " not defined unambiguously")
         return self.unambig[key]
+
+    def __ne__(self, other):
+        if not isinstance(other, ReadView):
+            return True
+
+        return dumps(other.raw) != dumps(self.raw)
+
+    def __eq__(self, other):
+        return not self.__ne__(other)
