@@ -34,11 +34,17 @@ class Value(Pio):
 
         self._vectors = None
         if vectors is not None:
-            self.vectors = vectors if isinstance(vectors[0], list) else [vectors]
+            self.vectors = [list(map(lambda y: y if isinstance(y, Scalar) else Scalar(value=y), x))
+                            for x in (vectors if isinstance(vectors[0], list) else [vectors])]
 
         self._matrices = None
         if matrices is not None:
-            self.matrices = matrices if isinstance(matrices[0][0], list) else [matrices]
+            self.matrices = [list(map(
+                lambda z: list(map(
+                    lambda y: y if isinstance(y, Scalar) else Scalar(value=y),
+                    z)),
+                x))
+                             for x in (matrices if isinstance(matrices[0][0], list) else [matrices])]
 
         self._units = None
         self.units = units
