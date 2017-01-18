@@ -28,9 +28,7 @@ class Value(Pio):
         self.name = name
 
         self._scalars = None
-        if scalars is not None:
-            self.scalars = [x if isinstance(x, Scalar) else Scalar(value=x)
-                            for x in (scalars if isinstance(scalars, list) else [scalars])]
+        self.scalars = scalars
 
         self._vectors = None
         if vectors is not None:
@@ -70,6 +68,8 @@ class Value(Pio):
     def scalars(self, scalars):
         self._validate_list_type('scalars', scalars, dict, string_types, numbers.Number, Scalar)
         self._scalars = self._get_object(Scalar, scalars)
+        self._scalars = [Scalar.normalize(x)
+                         for x in (self._scalars if isinstance(self._scalars, list) else [self._scalars])]
 
     @scalars.deleter
     def scalars(self):
@@ -113,3 +113,6 @@ class Value(Pio):
     @units.deleter
     def units(self):
         self._units = None
+
+    def normalize(self):
+        self.scalars = self.scalars
