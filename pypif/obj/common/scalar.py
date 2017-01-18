@@ -130,3 +130,7 @@ class Scalar(Pio):
     @approximate.deleter
     def approximate(self):
         self._approximate = None
+
+    @staticmethod
+    def normalize(x):
+        return x if isinstance(x, Scalar) else Scalar(value=x)
