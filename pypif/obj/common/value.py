@@ -26,12 +26,20 @@ class Value(Pio):
         super(Value, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
+
         self._scalars = None
-        self.scalars = scalars
+        if scalars is not None:
+            self.scalars = [x if isinstance(x, Scalar) else Scalar(value=x)
+                            for x in (scalars if isinstance(scalars, list) else [scalars])]
+
         self._vectors = None
-        self.vectors = vectors
+        if vectors is not None:
+            self.vectors = vectors if isinstance(vectors[0], list) else [vectors]
+
         self._matrices = None
-        self.matrices = matrices
+        if matrices is not None:
+            self.matrices = matrices if isinstance(matrices[0][0], list) else [matrices]
+
         self._units = None
         self.units = units
 
