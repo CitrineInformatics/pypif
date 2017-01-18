@@ -11,8 +11,8 @@ def test_read_view():
     r = ReadView(pif)
     assert r.uid == pif.uid
     assert r.names == pif.names
-    assert r.properties["foo"].scalars == 1.0
-    assert r.properties["bar"].scalars == 2.0
+    assert r.properties["foo"].scalars[0].value == 1.0
+    assert r.properties["bar"].scalars[0].value == 2.0
 
 
 def test_unambig():
@@ -20,8 +20,8 @@ def test_unambig():
     pif = System()
     pif.properties = [Property(name="foo", scalars=1.0), Property(name="bar", scalars=2.0)]
     r = ReadView(pif)
-    assert r["foo"].scalars == 1.0
-    assert r["bar"].scalars == 2.0
+    assert r["foo"].scalars[0].value == 1.0
+    assert r["bar"].scalars[0].value == 2.0
 
 
 def test_nested_read_view():
@@ -33,10 +33,10 @@ def test_nested_read_view():
     r = ReadView(pif2)
     assert r.sub_systems["10245"].uid == pif.uid
     assert r["10245"].uid == pif.uid
-    assert r.sub_systems["10245"].properties["foo"].scalars == 1.0
-    assert r.sub_systems["10245"].properties["bar"].scalars == 2.0
-    assert r["foo"].scalars == 1.0
-    assert r["bar"].scalars == 2.0
+    assert r.sub_systems["10245"].properties["foo"].scalars[0].value == 1.0
+    assert r.sub_systems["10245"].properties["bar"].scalars[0].value == 2.0
+    assert r["foo"].scalars[0].value == 1.0
+    assert r["bar"].scalars[0].value == 2.0
 
 
 def test_ambiguity():
@@ -46,11 +46,11 @@ def test_ambiguity():
     pif.properties = [Property(name="foo", scalars=1.0), Property(name="bar", scalars=2.0)]
     pif2 = System(sub_systems = [pif,], properties=[Property(name="foo", scalars=10.0)])
     r = ReadView(pif2)
-    assert r.properties["foo"].scalars == 10.0
-    assert r.sub_systems["10245"].properties["foo"].scalars == 1.0
+    assert r.properties["foo"].scalars[0].value == 10.0
+    assert r.sub_systems["10245"].properties["foo"].scalars[0].value == 1.0
     assert "foo" not in r.keys()
-    assert r.sub_systems["10245"]["foo"].scalars == 1.0
-    assert r["bar"].scalars == 2.0
+    assert r.sub_systems["10245"]["foo"].scalars[0].value == 1.0
+    assert r["bar"].scalars[0].value == 2.0
 
 
 def test_multiple_instances():
@@ -60,6 +60,6 @@ def test_multiple_instances():
     pif.properties = [Property(name="foo", scalars=1.0), Property(name="bar", scalars=2.0)]
     pif2 = System(sub_systems = [pif,], properties=[Property(name="bar", scalars=2.0)])
     r = ReadView(pif2)
-    assert r.properties["bar"].scalars == 2.0
-    assert r.sub_systems["10245"].properties["bar"].scalars == 2.0
-    assert r["bar"].scalars == 2.0
+    assert r.properties["bar"].scalars[0].value == 2.0
+    assert r.sub_systems["10245"].properties["bar"].scalars[0].value == 2.0
+    assert r["bar"].scalars[0].value == 2.0
