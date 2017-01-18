@@ -28,21 +28,16 @@ class Value(Pio):
         self.name = name
 
         self._scalars = None
-        self.scalars = scalars
+        if scalars is not None:
+            self.scalars = scalars
 
         self._vectors = None
         if vectors is not None:
-            self.vectors = [list(map(lambda y: y if isinstance(y, Scalar) else Scalar(value=y), x))
-                            for x in (vectors if isinstance(vectors[0], list) else [vectors])]
+            self.vectors = vectors
 
         self._matrices = None
         if matrices is not None:
-            self.matrices = [list(map(
-                lambda z: list(map(
-                    lambda y: y if isinstance(y, Scalar) else Scalar(value=y),
-                    z)),
-                x))
-                             for x in (matrices if isinstance(matrices[0][0], list) else [matrices])]
+            self.matrices = matrices
 
         self._units = None
         self.units = units
@@ -83,6 +78,8 @@ class Value(Pio):
     def vectors(self, vectors):
         self._validate_nested_list_type('vectors', vectors, 2, dict, string_types, numbers.Number, Scalar)
         self._vectors = self._get_object(Scalar, vectors)
+        self._vectors = [list(map(Scalar.normalize, x))
+                         for x in (self._vectors if isinstance(self._vectors[0], list) else [self._vectors])]
 
     @vectors.deleter
     def vectors(self):
@@ -96,6 +93,8 @@ class Value(Pio):
     def matrices(self, matrices):
         self._validate_nested_list_type('matrices', matrices, 3, dict, string_types, numbers.Number, Scalar)
         self._matrices = self._get_object(Scalar, matrices)
+        self._matrices = [list(map(lambda z: list(map(Scalar.normalize, z)), x))
+                          for x in (self._matrices if isinstance(self._matrices[0][0], list) else [self._matrices])]
 
     @matrices.deleter
     def matrices(self):
@@ -115,4 +114,9 @@ class Value(Pio):
         self._units = None
 
     def normalize(self):
-        self.scalars = self.scalars
+        if self.scalars is not None:
+            self.scalars = self.scalars
+        if self.vectors is not None:
+            self.vectors = self.vectors
+        if self.matrices is not None:
+            self.matrices = self.matrices
