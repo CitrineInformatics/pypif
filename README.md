@@ -8,7 +8,7 @@ Tools to serialize and deserialize to and from the [PIF](http://citrine.io/pif) 
 
 ### Requirements
 
-* Python 2.7
+* Python >= 2.7 or >= 3.4
 
 ### Setup
 
@@ -35,7 +35,7 @@ band_gap.units = 'eV'
 
 chemical_system.properties = band_gap
 
-print pif.dumps(chemical_system, indent=4)
+print(pif.dumps(chemical_system, indent=4))
 ```
 
 This example will serialize to the following JSON representation:
@@ -45,9 +45,13 @@ This example will serialize to the following JSON representation:
     "category": "system.chemical",
     "chemicalFormula": "MgO2",
     "properties": {
-        "scalars": 7.8,
         "units": "eV",
-        "name": "Band gap"
+        "name": "Band gap",
+        "scalars": [
+            {
+                "value": 7.8
+            }
+        ]
     }
 }
 ```
