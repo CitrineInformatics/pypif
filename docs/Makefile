@@ -44,6 +44,16 @@ help:
 	@echo "  coverage   to run coverage check of the documentation (if enabled)"
 	@echo "  dummy      to check syntax errors of document sources"
 
+.PHONY: gh-pages
+gh-pages: clean html
+	cd build/html && \
+	git init && \
+	git checkout -b gh-pages && \
+	git add . && \
+	git commit -m "updating sphinx" && \
+	git remote add upstream git@github.com:CitrineInformatics/pypif.git && \
+	git push upstream gh-pages --force
+
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)/*
