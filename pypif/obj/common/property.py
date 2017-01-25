@@ -1,5 +1,4 @@
 from six import string_types
-from pypif.obj.common.file_reference import FileReference
 from pypif.obj.common.method import Method
 from pypif.obj.common.rcl import Rcl
 from pypif.obj.common.value import Value
@@ -39,13 +38,11 @@ class Property(Value, Rcl):
         """
         # The order of the constructors is important here. The second constructor could overwrite values set during
         # the first if there is overlap.
-        Value.__init__(self, name=name, scalars=scalars, vectors=vectors, matrices=matrices,
+        Value.__init__(self, name=name, scalars=scalars, vectors=vectors, matrices=matrices, files=files,
                        units=units, tags=tags, **kwargs)
         self.references = references
         self.contacts = contacts
         self.licenses = licenses
-        self._files = None
-        self.files = files
         self._conditions = None
         self.conditions = conditions
         self._method = None
@@ -53,18 +50,7 @@ class Property(Value, Rcl):
         self._data_type = None
         self.data_type = data_type
 
-    @property
-    def files(self):
-        return self._files
 
-    @files.setter
-    def files(self, files):
-        self._validate_list_type('files', files, dict, FileReference)
-        self._files = files
-
-    @files.deleter
-    def files(self):
-        self._files = None
 
     @property
     def conditions(self):

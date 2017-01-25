@@ -2,6 +2,7 @@ import numbers
 from six import string_types
 from pypif.obj.common.pio import Pio
 from pypif.obj.common.scalar import Scalar
+from pypif.obj.common.file_reference import FileReference
 
 
 class Value(Pio):
@@ -9,7 +10,8 @@ class Value(Pio):
     Information about a scalar, vector, or matrix, or a list of one of those.
     """
 
-    def __init__(self, name=None, scalars=None, vectors=None, matrices=None, units=None, tags=None, **kwargs):
+    def __init__(self, name=None, scalars=None, vectors=None, matrices=None, files=None,
+                 units=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -19,6 +21,7 @@ class Value(Pio):
                 each representing a vector.
         :param matrices: One of more lists of lists of dictionaries, strings, numbers, or :class:`.Scalar` objects,
                 each representing a matrix with rows as the innermost lists.
+        :param files: One of more dictionaries, strings, or :class:`.FileReference` objects.
         :param units: String with the units of the value.
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
@@ -26,6 +29,9 @@ class Value(Pio):
         super(Value, self).__init__(tags=tags, **kwargs)
         self._name = None
         self.name = name
+
+        self._files = None
+        self.files = files
 
         self._scalars = None
         if scalars is not None:
@@ -112,6 +118,19 @@ class Value(Pio):
     @units.deleter
     def units(self):
         self._units = None
+
+    @property
+    def files(self):
+        return self._files
+
+    @files.setter
+    def files(self, files):
+        self._validate_list_type('files', files, dict, FileReference)
+        self._files = files
+
+    @files.deleter
+    def files(self):
+        self._files = None
 
     def normalize(self):
         if self.scalars is not None:
