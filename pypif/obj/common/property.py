@@ -25,7 +25,7 @@ class Property(Value, Rcl):
         :param conditions: List of dictionaries or :class:`.Value` objects with the conditions at which the
                 property exists.
         :param method: Dictionary or :class:`.Method` object describing the method used to get the property value.
-        :param data_type: String containing "EXPERIMENTAL", "COMPUTATIONAL", or "MACHINE_LEARNING" to set the
+        :param data_type: String containing "EXPERIMENTAL", "COMPUTATIONAL", "FIT", or "MACHINE_LEARNING" to set the
                 broad category of data.
         :param references: List of dictionaries or :class:`.Reference` objects where information about the
                 property is published.

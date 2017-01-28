@@ -1,5 +1,6 @@
 import numbers
 from six import string_types
+from pypif.obj.common.classification import Classification
 from pypif.obj.common.id import Id
 from pypif.obj.common.process_step import ProcessStep
 from pypif.obj.common.property import Property
@@ -13,14 +14,17 @@ class System(Rcl):
     Base representation for all systems.
     """
 
-    def __init__(self, uid=None, names=None, ids=None, source=None, quantity=None, properties=None, preparation=None,
-                 sub_systems=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
+    def __init__(self, uid=None, names=None, ids=None, classifications=None, source=None, quantity=None, 
+                 properties=None, preparation=None, sub_systems=None, references=None, contacts=None, 
+                 licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param uid: String with the permanent ID for this record.
         :param names: List of strings with common names of the system.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
+        :param classifications: List of dictionaries, strings, numbers, or :class:`.Classification` objects that 
+        classify the system.
         :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
         :param quantity: Dictionary or :class:`.Quantity` object with the quantity of the system.
         :param properties: List of dictionaries or :class:`.Property` objects with properties of the system.
@@ -43,6 +47,8 @@ class System(Rcl):
         self.names = names
         self._ids = None
         self.ids = ids
+        self._classifications = None
+        self.classifications = classifications
         self._source = None
         self.source = source
         self._quantity = None
@@ -89,6 +95,19 @@ class System(Rcl):
     def ids(self, ids):
         self._validate_list_type('ids', ids, dict, string_types, numbers.Number, Id)
         self._ids = self._get_object(Id, ids)
+
+    @ids.deleter
+    def ids(self):
+        self._ids = None
+
+    @property
+    def classifications(self):
+        return self._classifications
+
+    @classifications.setter
+    def classifications(self, classifications):
+        self._validate_list_type('classifications', classifications, dict, string_types, numbers.Number, Id)
+        self._classifications = self._get_object(Classification, classifications)
 
     @ids.deleter
     def ids(self):
