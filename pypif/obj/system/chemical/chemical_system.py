@@ -8,15 +8,17 @@ class ChemicalSystem(System):
     Representation of a general chemical system.
     """
 
-    def __init__(self, uid=None, names=None, ids=None, source=None, quantity=None, chemical_formula=None,
-                 composition=None, properties=None, preparation=None, sub_systems=None, references=None,
-                 contacts=None, licenses=None, tags=None, **kwargs):
+    def __init__(self, uid=None, names=None, ids=None, classifications=None, source=None, quantity=None,
+                 chemical_formula=None, composition=None, properties=None, preparation=None, sub_systems=None,
+                 references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param uid: String with the permanent ID for this record.
         :param names: List of strings with common names of the chemical system.
         :param ids: List of dictionaries, strings, numbers, or :class:`.Id` objects that identify the system.
+        :param classifications: List of dictionaries, strings, numbers, or :class:`.Classification` objects that
+        classify the system.
         :param source: Dictionary, string, or :class:`.Source` object with the source of the system.
         :param quantity: Dictionary or :class:`.Quantity` object with the quantity of the system.
         :param chemical_formula: String with the chemical formula.
@@ -35,10 +37,10 @@ class ChemicalSystem(System):
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
         """
-        super(ChemicalSystem, self).__init__(uid=uid, names=names, ids=ids, source=source, quantity=quantity,
-                                             properties=properties, preparation=preparation, sub_systems=sub_systems,
-                                             references=references, contacts=contacts, licenses=licenses, tags=tags,
-                                             **kwargs)
+        super(ChemicalSystem, self).__init__(uid=uid, names=names, ids=ids, classifications=classifications,
+                                             source=source, quantity=quantity, properties=properties,
+                                             preparation=preparation, sub_systems=sub_systems, references=references,
+                                             contacts=contacts, licenses=licenses, tags=tags, **kwargs)
         self._chemical_formula = None
         self.chemical_formula = chemical_formula
         self._composition = None

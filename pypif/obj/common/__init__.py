@@ -1,3 +1,4 @@
+from pypif.obj.common.classification import Classification
 from pypif.obj.common.display_item import DisplayItem
 from pypif.obj.common.id import Id
 from pypif.obj.common.instrument import Instrument
