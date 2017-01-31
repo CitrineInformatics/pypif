@@ -4,3 +4,5 @@ build
 .DS_Store
 dist
 pypif.egg-info*
+docs/build
+docs/source
