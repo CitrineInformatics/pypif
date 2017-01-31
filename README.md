@@ -1,17 +1,24 @@
-# pypif ![status](https://travis-ci.org/CitrineInformatics/pypif.svg?branch=master)
+# pypif 
+![status](https://travis-ci.org/CitrineInformatics/pypif.svg?branch=master)
+![PyPI version](https://badge.fury.io/py/pypif.svg)
 
 ## About
 
-Tools to serialize and deserialize to and from the [PIF](http://citrine.io/pif) schema. This package provides python objects for each object in the PIF schema and methods for serialization and deserialization.
+Tools to serialize and deserialize to and from the [PIF](http://citrine.io/pif) schema.
+This package provides python objects for each object in the PIF schema and methods
+for serialization and deserialization.
+
+There is a companion Java library called [JPIF](https://github.com/CitrineInformatics/jpif).
 
 ## Installation
 
 ### Requirements
 
-* Python >= 2.7 or >= 3.4
+* Python >= 2.7 or >= 3.3
 
 ### Setup
 
+`pypif` is published on [PyPI](https://pypi.python.org/pypi/pypif), so it can be installed with `pip`:
 ```shell
 $ pip install pypif
 ```
