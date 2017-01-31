@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pypif.pif module &#8212; pypif 1.1.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pypif 1.1.2 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pypif.pif">
+<span id="pypif-pif-module"></span><h1>pypif.pif module<a class="headerlink" href="#module-pypif.pif" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pypif.pif.dump">
+<code class="descclassname">pypif.pif.</code><code class="descname">dump</code><span class="sig-paren">(</span><em>pif</em>, <em>fp</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.pif.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a single Physical Information Object, or a list of such objects, into a JSON-encoded text file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pif</strong> &#8211; Object or list of objects to serialize.</li>
+<li><strong>fp</strong> &#8211; File-like object supporting .write() method to write the serialized object(s) to.</li>
+<li><strong>kwargs</strong> &#8211; Any options available to json.dump().</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pypif.pif.dumps">
+<code class="descclassname">pypif.pif.</code><code class="descname">dumps</code><span class="sig-paren">(</span><em>pif</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.pif.dumps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a single Physical Information Object, or a list of such objects, into a JSON-encoded string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pif</strong> &#8211; Object or list of objects to serialize.</li>
+<li><strong>kwargs</strong> &#8211; Any options available to json.dumps().</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pypif.pif.load">
+<code class="descclassname">pypif.pif.</code><code class="descname">load</code><span class="sig-paren">(</span><em>fp</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.pif.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert content in a JSON-encoded text file to a Physical Information Object or a list of such objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fp</strong> &#8211; File-like object supporting .read() method to deserialize from.</li>
+<li><strong>kwargs</strong> &#8211; Any options available to json.load().</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Single object derived from <a class="reference internal" href="pypif.obj.common.pio.html#pypif.obj.common.pio.Pio" title="pypif.obj.common.pio.Pio"><code class="xref py py-class docutils literal"><span class="pre">Pio</span></code></a> or a list of such object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pypif.pif.loado">
+<code class="descclassname">pypif.pif.</code><code class="descname">loado</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.pif.loado" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a dictionary or a list of dictionaries into a single Physical Information Object or a list of such objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>obj</strong> &#8211; Dictionary or list to convert to Physical Information Objects.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Single object derived from <a class="reference internal" href="pypif.obj.common.pio.html#pypif.obj.common.pio.Pio" title="pypif.obj.common.pio.Pio"><code class="xref py py-class docutils literal"><span class="pre">Pio</span></code></a> or a list of such object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pypif.pif.loads">
+<code class="descclassname">pypif.pif.</code><code class="descname">loads</code><span class="sig-paren">(</span><em>s</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.pif.loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert content in a JSON-encoded string to a Physical Information Object or a list of such objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s</strong> &#8211; String to deserialize.</li>
+<li><strong>kwargs</strong> &#8211; Any options available to json.loads().</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Single object derived from <a class="reference internal" href="pypif.obj.common.pio.html#pypif.obj.common.pio.Pio" title="pypif.obj.common.pio.Pio"><code class="xref py py-class docutils literal"><span class="pre">Pio</span></code></a> or a list of such object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pypif.pif.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Citrine Informatics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

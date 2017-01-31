@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pypif.obj.common.reference module &#8212; pypif 1.1.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pypif 1.1.2 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pypif.obj.common.reference">
+<span id="pypif-obj-common-reference-module"></span><h1>pypif.obj.common.reference module<a class="headerlink" href="#module-pypif.obj.common.reference" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pypif.obj.common.reference.Reference">
+<em class="property">class </em><code class="descclassname">pypif.obj.common.reference.</code><code class="descname">Reference</code><span class="sig-paren">(</span><em>doi=None</em>, <em>isbn=None</em>, <em>issn=None</em>, <em>url=None</em>, <em>title=None</em>, <em>publisher=None</em>, <em>journal=None</em>, <em>volume=None</em>, <em>issue=None</em>, <em>year=None</em>, <em>figure=None</em>, <em>table=None</em>, <em>pages=None</em>, <em>authors=None</em>, <em>editors=None</em>, <em>affiliations=None</em>, <em>acknowledgements=None</em>, <em>references=None</em>, <em>tags=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.obj.common.reference.Reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pypif.obj.common.pio.html#pypif.obj.common.pio.Pio" title="pypif.obj.common.pio.Pio"><code class="xref py py-class docutils literal"><span class="pre">pypif.obj.common.pio.Pio</span></code></a></p>
+<p>Information about a referenced publication.</p>
+<dl class="method">
+<dt id="pypif.obj.common.reference.Reference.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>doi=None</em>, <em>isbn=None</em>, <em>issn=None</em>, <em>url=None</em>, <em>title=None</em>, <em>publisher=None</em>, <em>journal=None</em>, <em>volume=None</em>, <em>issue=None</em>, <em>year=None</em>, <em>figure=None</em>, <em>table=None</em>, <em>pages=None</em>, <em>authors=None</em>, <em>editors=None</em>, <em>affiliations=None</em>, <em>acknowledgements=None</em>, <em>references=None</em>, <em>tags=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.obj.common.reference.Reference.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>doi</strong> &#8211; String with DOI of the published work</li>
+<li><strong>isbn</strong> &#8211; String with ISBN of the published work</li>
+<li><strong>issn</strong> &#8211; String with ISSN of the published work</li>
+<li><strong>url</strong> &#8211; String with URL to the published work</li>
+<li><strong>title</strong> &#8211; String with title of the published work.</li>
+<li><strong>publisher</strong> &#8211; String with publisher of the work.</li>
+<li><strong>journal</strong> &#8211; String with the journal in which the work was published.</li>
+<li><strong>volume</strong> &#8211; String with the volume in which the work was published.</li>
+<li><strong>issue</strong> &#8211; String with the issue in which the work was published.</li>
+<li><strong>year</strong> &#8211; String with the year in which the work was published.</li>
+<li><strong>figure</strong> &#8211; Dictionary or <a class="reference internal" href="pypif.obj.common.display_item.html#pypif.obj.common.display_item.DisplayItem" title="pypif.obj.common.display_item.DisplayItem"><code class="xref py py-class docutils literal"><span class="pre">DisplayItem</span></code></a> object with the figure to reference.</li>
+<li><strong>table</strong> &#8211; Dictionary or <a class="reference internal" href="pypif.obj.common.display_item.html#pypif.obj.common.display_item.DisplayItem" title="pypif.obj.common.display_item.DisplayItem"><code class="xref py py-class docutils literal"><span class="pre">DisplayItem</span></code></a> object with the table to reference.</li>
+<li><strong>pages</strong> &#8211; String, integer, dictionary, or <a class="reference internal" href="pypif.obj.common.pages.html#pypif.obj.common.pages.Pages" title="pypif.obj.common.pages.Pages"><code class="xref py py-class docutils literal"><span class="pre">Pages</span></code></a> object with the starting and ending pages for
+the published work.</li>
+<li><strong>authors</strong> &#8211; List of strings, dictionaries, or <a class="reference internal" href="pypif.obj.common.name.html#pypif.obj.common.name.Name" title="pypif.obj.common.name.Name"><code class="xref py py-class docutils literal"><span class="pre">Name</span></code></a> objects with information about the authors.</li>
+<li><strong>editors</strong> &#8211; List of strings, dictionaries, or <a class="reference internal" href="pypif.obj.common.name.html#pypif.obj.common.name.Name" title="pypif.obj.common.name.Name"><code class="xref py py-class docutils literal"><span class="pre">Name</span></code></a> objects with information about the editors.</li>
+<li><strong>affiliations</strong> &#8211; List of strings with affiliations.</li>
+<li><strong>acknowledgements</strong> &#8211; List of strings with acknowledgements.</li>
+<li><strong>references</strong> &#8211; List of dictionaries or <a class="reference internal" href="#pypif.obj.common.reference.Reference" title="pypif.obj.common.reference.Reference"><code class="xref py py-class docutils literal"><span class="pre">Reference</span></code></a> objects with works cited by this published work.</li>
+<li><strong>tags</strong> &#8211; List of strings or numbers that are tags for this object.</li>
+<li><strong>kwargs</strong> &#8211; Dictionary of fields that are not supported.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.acknowledgements">
+<code class="descname">acknowledgements</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.acknowledgements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.affiliations">
+<code class="descname">affiliations</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.affiliations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.authors">
+<code class="descname">authors</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.authors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.doi">
+<code class="descname">doi</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.doi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.editors">
+<code class="descname">editors</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.editors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.figure">
+<code class="descname">figure</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.figure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.isbn">
+<code class="descname">isbn</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.isbn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.issn">
+<code class="descname">issn</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.issn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.issue">
+<code class="descname">issue</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.issue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.journal">
+<code class="descname">journal</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.journal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.pages">
+<code class="descname">pages</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.pages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.publisher">
+<code class="descname">publisher</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.publisher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.references">
+<code class="descname">references</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.references" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.table">
+<code class="descname">table</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.title">
+<code class="descname">title</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.url">
+<code class="descname">url</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.volume">
+<code class="descname">volume</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.common.reference.Reference.year">
+<code class="descname">year</code><a class="headerlink" href="#pypif.obj.common.reference.Reference.year" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pypif.obj.common.reference.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Citrine Informatics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

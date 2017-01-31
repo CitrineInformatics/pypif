@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pypif.stats.common.property_stats_wrapper module &#8212; pypif 1.1.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pypif 1.1.2 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pypif.stats.common.property_stats_wrapper">
+<span id="pypif-stats-common-property-stats-wrapper-module"></span><h1>pypif.stats.common.property_stats_wrapper module<a class="headerlink" href="#module-pypif.stats.common.property_stats_wrapper" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pypif.stats.common.property_stats_wrapper.PropertyStats">
+<em class="property">class </em><code class="descclassname">pypif.stats.common.property_stats_wrapper.</code><code class="descname">PropertyStats</code><span class="sig-paren">(</span><em>count=None</em>, <em>name=None</em>, <em>value=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.stats.common.property_stats_wrapper.PropertyStats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pypif.stats.common.stats_wrapper.html#pypif.stats.common.stats_wrapper.Stats" title="pypif.stats.common.stats_wrapper.Stats"><code class="xref py py-class docutils literal"><span class="pre">pypif.stats.common.stats_wrapper.Stats</span></code></a></p>
+<p>Class to store stats about a single property.</p>
+<dl class="method">
+<dt id="pypif.stats.common.property_stats_wrapper.PropertyStats.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>count=None</em>, <em>name=None</em>, <em>value=None</em>, <em>units=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.stats.common.property_stats_wrapper.PropertyStats.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>count</strong> &#8211; Count for this object.</li>
+<li><strong>name</strong> &#8211; Dictionary or <a class="reference internal" href="pypif.stats.common.field_stats.html#pypif.stats.common.field_stats.FieldStats" title="pypif.stats.common.field_stats.FieldStats"><code class="xref py py-class docutils literal"><span class="pre">FieldStats</span></code></a> object with stats of the property name.</li>
+<li><strong>value</strong> &#8211; Dictionary or <a class="reference internal" href="pypif.stats.common.field_stats.html#pypif.stats.common.field_stats.FieldStats" title="pypif.stats.common.field_stats.FieldStats"><code class="xref py py-class docutils literal"><span class="pre">FieldStats</span></code></a> object with stats of the property value.</li>
+<li><strong>units</strong> &#8211; Dictionary or <a class="reference internal" href="pypif.stats.common.field_stats.html#pypif.stats.common.field_stats.FieldStats" title="pypif.stats.common.field_stats.FieldStats"><code class="xref py py-class docutils literal"><span class="pre">FieldStats</span></code></a> object with stats of the property units.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pypif.stats.common.property_stats_wrapper.PropertyStatsWrapper">
+<em class="property">class </em><code class="descclassname">pypif.stats.common.property_stats_wrapper.</code><code class="descname">PropertyStatsWrapper</code><span class="sig-paren">(</span><em>count=None</em>, <em>common=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.stats.common.property_stats_wrapper.PropertyStatsWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pypif.stats.common.stats_wrapper.html#pypif.stats.common.stats_wrapper.StatsWrapper" title="pypif.stats.common.stats_wrapper.StatsWrapper"><code class="xref py py-class docutils literal"><span class="pre">pypif.stats.common.stats_wrapper.StatsWrapper</span></code></a></p>
+<p>Class to store stats about a set of properties.</p>
+<dl class="method">
+<dt id="pypif.stats.common.property_stats_wrapper.PropertyStatsWrapper.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>count=None</em>, <em>common=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.stats.common.property_stats_wrapper.PropertyStatsWrapper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>count</strong> &#8211; Count of properties.</li>
+<li><strong>common</strong> &#8211; List of Dictionary or <a class="reference internal" href="#pypif.stats.common.property_stats_wrapper.PropertyStats" title="pypif.stats.common.property_stats_wrapper.PropertyStats"><code class="xref py py-class docutils literal"><span class="pre">PropertyStats</span></code></a> objects with stats of the properties.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pypif.stats.common.property_stats_wrapper.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Citrine Informatics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

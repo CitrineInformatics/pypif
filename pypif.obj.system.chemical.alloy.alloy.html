@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pypif.obj.system.chemical.alloy.alloy module &#8212; pypif 1.1.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.1.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="pypif 1.1.2 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pypif.obj.system.chemical.alloy.alloy">
+<span id="pypif-obj-system-chemical-alloy-alloy-module"></span><h1>pypif.obj.system.chemical.alloy.alloy module<a class="headerlink" href="#module-pypif.obj.system.chemical.alloy.alloy" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pypif.obj.system.chemical.alloy.alloy.Alloy">
+<em class="property">class </em><code class="descclassname">pypif.obj.system.chemical.alloy.alloy.</code><code class="descname">Alloy</code><span class="sig-paren">(</span><em>uid=None</em>, <em>names=None</em>, <em>ids=None</em>, <em>source=None</em>, <em>quantity=None</em>, <em>chemical_formula=None</em>, <em>composition=None</em>, <em>properties=None</em>, <em>preparation=None</em>, <em>sub_systems=None</em>, <em>phases=None</em>, <em>references=None</em>, <em>contacts=None</em>, <em>licenses=None</em>, <em>tags=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.obj.system.chemical.alloy.alloy.Alloy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pypif.obj.system.chemical.chemical_system.html#pypif.obj.system.chemical.chemical_system.ChemicalSystem" title="pypif.obj.system.chemical.chemical_system.ChemicalSystem"><code class="xref py py-class docutils literal"><span class="pre">pypif.obj.system.chemical.chemical_system.ChemicalSystem</span></code></a></p>
+<p>Information about an alloy.</p>
+<dl class="method">
+<dt id="pypif.obj.system.chemical.alloy.alloy.Alloy.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>uid=None</em>, <em>names=None</em>, <em>ids=None</em>, <em>source=None</em>, <em>quantity=None</em>, <em>chemical_formula=None</em>, <em>composition=None</em>, <em>properties=None</em>, <em>preparation=None</em>, <em>sub_systems=None</em>, <em>phases=None</em>, <em>references=None</em>, <em>contacts=None</em>, <em>licenses=None</em>, <em>tags=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pypif.obj.system.chemical.alloy.alloy.Alloy.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>uid</strong> &#8211; String with the permanent ID for this record.</li>
+<li><strong>names</strong> &#8211; List of strings with common names of the alloy.</li>
+<li><strong>ids</strong> &#8211; List of dictionaries, strings, numbers, or <a class="reference internal" href="pypif.obj.common.id.html#pypif.obj.common.id.Id" title="pypif.obj.common.id.Id"><code class="xref py py-class docutils literal"><span class="pre">Id</span></code></a> objects that identify the alloy.</li>
+<li><strong>source</strong> &#8211; Dictionary, string, or <a class="reference internal" href="pypif.obj.common.source.html#pypif.obj.common.source.Source" title="pypif.obj.common.source.Source"><code class="xref py py-class docutils literal"><span class="pre">Source</span></code></a> object with the source of the alloy.</li>
+<li><strong>quantity</strong> &#8211; Dictionary or <a class="reference internal" href="pypif.obj.common.quantity.html#pypif.obj.common.quantity.Quantity" title="pypif.obj.common.quantity.Quantity"><code class="xref py py-class docutils literal"><span class="pre">Quantity</span></code></a> object with the quantity of the alloy.</li>
+<li><strong>chemical_formula</strong> &#8211; String with the chemical formula.</li>
+<li><strong>composition</strong> &#8211; List of dictionaries or <a class="reference internal" href="pypif.obj.system.chemical.common.composition.html#pypif.obj.system.chemical.common.composition.Composition" title="pypif.obj.system.chemical.common.composition.Composition"><code class="xref py py-class docutils literal"><span class="pre">Composition</span></code></a> objects that describe the composition of
+the alloy.</li>
+<li><strong>properties</strong> &#8211; List of dictionaries or <a class="reference internal" href="pypif.obj.common.property.html#pypif.obj.common.property.Property" title="pypif.obj.common.property.Property"><code class="xref py py-class docutils literal"><span class="pre">Property</span></code></a> objects with properties of the alloy.</li>
+<li><strong>preparation</strong> &#8211; List of dictionaries or <a class="reference internal" href="pypif.obj.common.process_step.html#pypif.obj.common.process_step.ProcessStep" title="pypif.obj.common.process_step.ProcessStep"><code class="xref py py-class docutils literal"><span class="pre">ProcessStep</span></code></a> objects with the preparation
+information of the alloy.</li>
+<li><strong>sub_systems</strong> &#8211; List of dictionaries or <a class="reference internal" href="pypif.obj.system.system.html#pypif.obj.system.system.System" title="pypif.obj.system.system.System"><code class="xref py py-class docutils literal"><span class="pre">System</span></code></a> objects with the subsystems of the alloy.</li>
+<li><strong>phases</strong> &#8211; List of dictionaries or <a class="reference internal" href="pypif.obj.system.chemical.alloy.alloy_phase.html#pypif.obj.system.chemical.alloy.alloy_phase.AlloyPhase" title="pypif.obj.system.chemical.alloy.alloy_phase.AlloyPhase"><code class="xref py py-class docutils literal"><span class="pre">AlloyPhase</span></code></a> objects with the phases of the alloy.</li>
+<li><strong>references</strong> &#8211; List of dictionaries or <a class="reference internal" href="pypif.obj.common.reference.html#pypif.obj.common.reference.Reference" title="pypif.obj.common.reference.Reference"><code class="xref py py-class docutils literal"><span class="pre">Reference</span></code></a> objects where information about the alloy
+is published.</li>
+<li><strong>contacts</strong> &#8211; List of dictionaries, strings, or <a class="reference internal" href="pypif.obj.common.person.html#pypif.obj.common.person.Person" title="pypif.obj.common.person.Person"><code class="xref py py-class docutils literal"><span class="pre">Person</span></code></a> objects with people to contact for
+information about the alloy.</li>
+<li><strong>licenses</strong> &#8211; List of dictionaries, strings, or <a class="reference internal" href="pypif.obj.common.license.html#pypif.obj.common.license.License" title="pypif.obj.common.license.License"><code class="xref py py-class docutils literal"><span class="pre">License</span></code></a> objects with licensing information
+for data about the alloy.</li>
+<li><strong>tags</strong> &#8211; List of strings or numbers that are tags for this object.</li>
+<li><strong>kwargs</strong> &#8211; Dictionary of fields that are not supported.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pypif.obj.system.chemical.alloy.alloy.Alloy.phases">
+<code class="descname">phases</code><a class="headerlink" href="#pypif.obj.system.chemical.alloy.alloy.Alloy.phases" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pypif.obj.system.chemical.alloy.alloy.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pypif 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Citrine Informatics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+    </div>
+  </body>
+</html>

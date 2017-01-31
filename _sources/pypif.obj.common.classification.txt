@@ -1,0 +1,7 @@
+pypif.obj.common.classification module
+======================================
+
+.. automodule:: pypif.obj.common.classification
+    :members:
+    :undoc-members:
+    :show-inheritance:
