@@ -57,9 +57,15 @@ gh-pages: clean html
 .PHONY: clean
 clean:
 	rm -rf $(BUILDDIR)/*
+	rm -rf source
+
+.PHONY: apidoc
+apidoc: clean
+	cp -r src source
+	sphinx-apidoc -e ../pypif -o source
 
 .PHONY: html
-html:
+html: apidoc
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
