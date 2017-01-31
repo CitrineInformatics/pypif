@@ -1,4 +1,4 @@
-# pypif
+# pypif ![status](https://travis-ci.org/CitrineInformatics/pypif.svg?branch=master)
 
 ## About
 
