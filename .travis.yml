@@ -1,15 +1,22 @@
 language: python
 sudo: false
 python:
-    - "2.7"
-    - "3.3"
-    - "3.4"
-    - "3.5"
-    - "3.6"
-
+- '2.7'
+- '3.3'
+- '3.4'
+- '3.5'
+- '3.6'
 install:
-  - pip install pytest
-  - python setup.py install
-
+- pip install pytest
+- python setup.py install
 script:
-    - py.test pypif --verbose
+- py.test pypif --verbose
+deploy:
+  provider: pypi
+  user: CitrineInformatics
+  password:
+    secure: QaxOL3h4n7YqS3isvY63S6ejnEGqXJDobMlhxXr158pHKChjKzuf46JSRXAPEbiq/JR7H+m3qWLaTABBxvjU0jjKIXNVN0u+dG+pVBN0ZAfS18WspTYsdjH2eIR6AbCOsvA//dpohuz5C/oJHco2ZB1QiOVSsQsWXCUQk0mIXeXfRLvJtkuVigijiayRAnpDx37/icTvzgsN/H96bGk/5Ms/sV5V2tWp6KtJnMhFa0thQXmF8MRyfeqkqh56qJcfPHL7HHO1p/PEbUrZ2jrPo0ErKKGhWOPVBmkklPDASAsbXBDy+2twHAMn6f1QDk243+QexRjfET1b0XZrGSIH90dyvvJg99m0HbU5/44ZN1t9UYY9f5cnm+bmeG8ApRWuDUpIFEGCulv54yk0s4f86oknW7z29z1fUhMcYUhnTIy/JlO5Me+dlcsip3NsMo0B78/OqnXmI5UyphWRbJps4+0b9NPYoUEzPibfEMQVjEw8H4UEc0DIbnwKyk8C18OWo3l9OtuZ8jzWM5owEfTDCjSw6fowHy9AhJ+of0JFv6CN6+1GHf5rXDJzMLAyyYLniRr4PzFii9YW+2moLsQCMbRsqI/CPM8Q/x3vPm4b3I8cdnJ+xUjFNQejUSkhySL0uEr9FRGdyrW2n712T0FZvZL7Y9wz+9KhdTUqtYIyo2w=
+  on:
+    distributions: sdist bdist_wheel
+    repo: CitrineInformatics/pypif
+    branch: master
