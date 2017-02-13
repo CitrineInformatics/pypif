@@ -32,7 +32,7 @@ class Person(Pio):
 
     @name.setter
     def name(self, name):
-        self._validate_type('name', name, dict, Name)
+        self._validate_type('name', name, dict, Name, string_types)
         self._name = self._get_object(Name, name)
 
     @name.deleter
