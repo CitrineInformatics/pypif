@@ -10,7 +10,7 @@ class Property(Value, Rcl):
     """
 
     def __init__(self, name=None, scalars=None, vectors=None, matrices=None, files=None, units=None, conditions=None,
-                 method=None, data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
+                 method=None, methods=None, data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -25,6 +25,7 @@ class Property(Value, Rcl):
         :param conditions: List of dictionaries or :class:`.Value` objects with the conditions at which the
                 property exists.
         :param method: Dictionary or :class:`.Method` object describing the method used to get the property value.
+        :param methods: List of dictionary or :class:`.Method` object describing the method used to get the property value.
         :param data_type: String containing "EXPERIMENTAL", "COMPUTATIONAL", "FIT", or "MACHINE_LEARNING" to set the
                 broad category of data.
         :param references: List of dictionaries or :class:`.Reference` objects where information about the
@@ -47,6 +48,8 @@ class Property(Value, Rcl):
         self.conditions = conditions
         self._method = None
         self.method = method
+        self._methods = None
+        self.methods = methods
         self._data_type = None
         self.data_type = data_type
 
@@ -76,7 +79,20 @@ class Property(Value, Rcl):
 
     @method.deleter
     def method(self):
-        self._method = None
+        self._methods = None
+
+    @property
+    def methods(self):
+        return self._methods
+
+    @methods.setter
+    def methods(self, methods):
+        self._validate_list_type('method', methods, dict, Method)
+        self._methods = self._get_object(Method, methods)
+
+    @methods.deleter
+    def methods(self):
+        self._methods = None
 
     @property
     def data_type(self):
