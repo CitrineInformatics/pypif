@@ -25,7 +25,6 @@ class Property(Value, Rcl):
         :param units: String with the units of the property.
         :param conditions: List of dictionaries or :class:`.Value` objects with the conditions at which the
                 property exists.
-        :param method: Dictionary or :class:`.Method` object describing the method used to get the property value.
         :param methods: List of dictionary or :class:`.Method` object describing the method used to get the property value.
         :param data_type: String containing "EXPERIMENTAL", "COMPUTATIONAL", "FIT", or "MACHINE_LEARNING" to set the
                 broad category of data.
@@ -50,7 +49,7 @@ class Property(Value, Rcl):
         self._methods = None
         self.methods = methods
         if 'method' in kwargs:
-            self._methods = method
+            self.methods = method
         self._data_type = None
         self.data_type = data_type
 
@@ -77,13 +76,12 @@ class Property(Value, Rcl):
     @method.setter
     def method(self, method):
         warn("method has been deprecated in favor of methods")
-        self._validate_type('method', method, dict, Method)
-        self._methods = self._get_object(Method, method)
+        self.methods = method
 
     @method.deleter
     def method(self):
         warn("method has been deprecated in favor of methods")
-        self._methods = None
+        del self.methods
 
     @property
     def methods(self):
