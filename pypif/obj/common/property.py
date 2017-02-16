@@ -2,6 +2,7 @@ from six import string_types
 from pypif.obj.common.method import Method
 from pypif.obj.common.rcl import Rcl
 from pypif.obj.common.value import Value
+from warnings import warn
 
 
 class Property(Value, Rcl):
@@ -10,7 +11,7 @@ class Property(Value, Rcl):
     """
 
     def __init__(self, name=None, scalars=None, vectors=None, matrices=None, files=None, units=None, conditions=None,
-                 method=None, methods=None, data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
+                 methods=None, data_type=None, references=None, contacts=None, licenses=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -46,10 +47,10 @@ class Property(Value, Rcl):
         self.licenses = licenses
         self._conditions = None
         self.conditions = conditions
-        self._method = None
-        self.method = method
         self._methods = None
         self.methods = methods
+        if 'method' in kwargs:
+            self._methods = method
         self._data_type = None
         self.data_type = data_type
 
@@ -70,15 +71,18 @@ class Property(Value, Rcl):
 
     @property
     def method(self):
-        return self._method
+        warn("method has been deprecated in favor of methods")
+        return self._methods
 
     @method.setter
     def method(self, method):
+        warn("method has been deprecated in favor of methods")
         self._validate_type('method', method, dict, Method)
         self._method = self._get_object(Method, method)
 
     @method.deleter
     def method(self):
+        warn("method has been deprecated in favor of methods")
         self._method = None
 
     @property
@@ -87,7 +91,7 @@ class Property(Value, Rcl):
 
     @methods.setter
     def methods(self, methods):
-        self._validate_list_type('method', methods, dict, Method)
+        self._validate_list_type('methods', methods, dict, Method)
         self._methods = self._get_object(Method, methods)
 
     @methods.deleter
