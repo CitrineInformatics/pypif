@@ -78,12 +78,12 @@ class Property(Value, Rcl):
     def method(self, method):
         warn("method has been deprecated in favor of methods")
         self._validate_type('method', method, dict, Method)
-        self._method = self._get_object(Method, method)
+        self._methods = self._get_object(Method, method)
 
     @method.deleter
     def method(self):
         warn("method has been deprecated in favor of methods")
-        self._method = None
+        self._methods = None
 
     @property
     def methods(self):
