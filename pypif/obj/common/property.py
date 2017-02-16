@@ -79,7 +79,7 @@ class Property(Value, Rcl):
 
     @method.deleter
     def method(self):
-        self._methods = None
+        self._method = None
 
     @property
     def methods(self):
