@@ -46,10 +46,10 @@ class Property(Value, Rcl):
         self.licenses = licenses
         self._conditions = None
         self.conditions = conditions
-        self._methods = None
-        self.methods = methods
         if 'method' in kwargs:
             self.methods = method
+        self._methods = None
+        self.methods = methods
         self._data_type = None
         self.data_type = data_type
 
