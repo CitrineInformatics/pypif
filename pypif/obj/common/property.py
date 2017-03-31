@@ -47,7 +47,7 @@ class Property(Value, Rcl):
         self._conditions = None
         self.conditions = conditions
         if 'method' in kwargs:
-            self.methods = method
+            self.methods = kwargs['method']
         self._methods = None
         self.methods = methods
         self._data_type = None
