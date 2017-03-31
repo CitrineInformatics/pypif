@@ -24,17 +24,6 @@ def test_convert_setter():
     assert foo.scalars[0].value == 1.2
 
 
-def test_convert_setter():
-    """Test that scalars are made rigid"""
-    foo = Value()
-    val = [1.2, ]
-    foo.scalars = val
-    assert foo.scalars[0].value == 1.2
-    foo.scalars.append(1.4)
-    foo.normalize()
-    assert foo.scalars[1].value == 1.4
-
-
 def test_convert_vector():
     """Test that vectors are made rigid"""
     foo = Value(vectors=[1.2, 1.3])
