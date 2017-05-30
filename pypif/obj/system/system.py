@@ -106,7 +106,7 @@ class System(Rcl):
 
     @classifications.setter
     def classifications(self, classifications):
-        self._validate_list_type('classifications', classifications, dict, string_types, numbers.Number, Id)
+        self._validate_list_type('classifications', classifications, dict, string_types, numbers.Number, Classification)
         self._classifications = self._get_object(Classification, classifications)
 
     @ids.deleter
