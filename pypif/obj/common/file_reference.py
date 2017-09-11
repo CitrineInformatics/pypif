@@ -7,7 +7,7 @@ class FileReference(Pio):
     Information about a file.
     """
 
-    def __init__(self, relative_path=None, mime_type=None, sha256=None, md5=None, tags=None, **kwargs):
+    def __init__(self, relative_path=None, url=None, mime_type=None, sha256=None, md5=None, tags=None, **kwargs):
         """
         Constructor.
 
@@ -21,6 +21,8 @@ class FileReference(Pio):
         super(FileReference, self).__init__(tags=tags, **kwargs)
         self._relative_path = None
         self.relative_path = relative_path
+        self._url = None
+        self.url = url
         self._mime_type = None
         self.mime_type = mime_type
         self._sha256 = None
@@ -40,6 +42,19 @@ class FileReference(Pio):
     @relative_path.deleter
     def relative_path(self):
         self._relative_path = None
+
+    @property
+    def url(self):
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        self._validate_type('url', url, string_types)
+        self._url = url
+
+    @url.deleter
+    def url(self):
+        self._url = None
 
     @property
     def mime_type(self):
