@@ -17,7 +17,7 @@ def test_round_robin():
     foo = Value(name="foo", units="eV")
     assert foo.name == "foo", "Value object couldn't store name"
     assert foo.units == "eV", "Value object couldn't store units"
-    round_robin = pif.loads(pif.dumps(foo), builder=Value)
+    round_robin = pif.loads(pif.dumps(foo), class_=Value)
     assert round_robin.name == "foo", "Name didn't survive json round robin"
     assert round_robin.units == "eV", "Units didn't survive json round robin"
 
