@@ -1,4 +1,5 @@
 from pypif.obj.common.value import Value
+from pypif import pif
 import pytest
 
 
@@ -10,6 +11,15 @@ def test_basic():
     assert len(foo.tags) == 2
     assert "tag1" in foo.tags
     assert "tag2" in foo.tags
+
+
+def test_round_robin():
+    foo = Value(name="foo", units="eV")
+    assert foo.name == "foo", "Value object couldn't store name"
+    assert foo.units == "eV", "Value object couldn't store units"
+    round_robin = pif.loads(pif.dumps(foo), builder=Value)
+    assert round_robin.name == "foo", "Name didn't survive json round robin"
+    assert round_robin.units == "eV", "Units didn't survive json round robin"
 
 
 @pytest.mark.xfail

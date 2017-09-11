@@ -26,7 +26,7 @@ def dumps(pif, **kwargs):
     return json.dumps(pif, cls=PifEncoder, **kwargs)
 
 
-def load(fp, **kwargs):
+def load(fp, builder=None, **kwargs):
     """
     Convert content in a JSON-encoded text file to a Physical Information Object or a list of such objects.
 
@@ -34,10 +34,10 @@ def load(fp, **kwargs):
     :param kwargs: Any options available to json.load().
     :return: Single object derived from :class:`.Pio` or a list of such object.
     """
-    return loado(json.load(fp, **kwargs))
+    return loado(json.load(fp, **kwargs), builder=builder)
 
 
-def loads(s, **kwargs):
+def loads(s, builder=None, **kwargs):
     """
     Convert content in a JSON-encoded string to a Physical Information Object or a list of such objects.
 
@@ -45,10 +45,10 @@ def loads(s, **kwargs):
     :param kwargs: Any options available to json.loads().
     :return: Single object derived from :class:`.Pio` or a list of such object.
     """
-    return loado(json.loads(s, **kwargs))
+    return loado(json.loads(s, **kwargs), builder=builder)
 
 
-def loado(obj):
+def loado(obj, builder=None):
     """
     Convert a dictionary or a list of dictionaries into a single Physical Information Object or a list of such objects.
 
@@ -56,14 +56,14 @@ def loado(obj):
     :return: Single object derived from :class:`.Pio` or a list of such object.
     """
     if isinstance(obj, list):
-        return [_dict_to_pio(i) for i in obj]
+        return [_dict_to_pio(i, builder=builder) for i in obj]
     elif isinstance(obj, dict):
-        return _dict_to_pio(obj)
+        return _dict_to_pio(obj, builder=builder)
     else:
         raise ValueError('expecting list or dictionary as outermost structure')
 
 
-def _dict_to_pio(d):
+def _dict_to_pio(d, builder=None):
     """
     Convert a single dictionary object to a Physical Information Object.
 
@@ -71,6 +71,8 @@ def _dict_to_pio(d):
     :return: Single object derived from :class:`.Pio`.
     """
     d = keys_to_snake_case(d)
+    if builder:
+        return builder(**d)
     if 'category' not in d:
         raise ValueError('Dictionary does not contains a category field: ' + ', '.join(d.keys()))
     elif d['category'] == 'system':
