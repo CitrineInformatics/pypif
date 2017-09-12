@@ -1,4 +1,4 @@
-from pypif.obj import System, Property, Scalar
+from pypif.obj import System, Property, Scalar, Value, Method, Software
 from pypif.util.read_view import ReadView
 
 
@@ -39,6 +39,17 @@ def test_nested_read_view():
     assert r["bar"].scalars[0].value == 2.0
 
 
+def test_condition_elevation():
+    """Test that read views elevate conditions"""
+    condition = Value(name="spam", scalars=[Scalar(value="eggs")])
+    pif = System(properties=[
+        Property(name="foo", scalars=[Scalar(value="bar")], conditions=[condition])
+    ])
+    r = ReadView(pif)
+    assert r["foo"].scalars[0].value == "bar", "Didn't elevate property key"
+    assert r["spam"].scalars[0].value == "eggs", "Didn't elevate condition key"
+
+
 def test_ambiguity():
     """Test that ambiguous keys are removed from the top level dict"""
     pif = System()
@@ -63,3 +74,15 @@ def test_multiple_instances():
     assert r.properties["bar"].scalars[0].value == 2.0
     assert r.sub_systems["10245"].properties["bar"].scalars[0].value == 2.0
     assert r["bar"].scalars[0].value == 2.0
+
+
+def test_method_software():
+    """Testing that method and software names are elevated"""
+    method = Method(name="spam", software=[Software(name="magic")])
+    pif = System(properties=[
+        Property(name="foo", scalars=[Scalar(value="bar")], methods=[method])
+    ])
+    r = ReadView(pif)
+    assert r["foo"].scalars[0].value == "bar", "Didn't elevate property key"
+    assert "spam" in r.keys(), "Expected spam in keys"
+    assert "magic" in r.keys(), "Expected magic in keys"
