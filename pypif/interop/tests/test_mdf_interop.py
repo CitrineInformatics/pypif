@@ -1,6 +1,20 @@
-from pypif.obj.common import Property, Scalar
-from pypif.obj.system import System
+from pypif.obj.common import Property, Scalar, Person, Name, License, Reference
+from pypif.obj.system import System, ChemicalSystem
 from pypif.interop.mdf import _to_user_defined, _construct_new_key
+
+
+test_pif = ChemicalSystem(
+    chemical_formula="CH4",
+    names = ["methane", "fart"],
+    contacts = [Person(name=Name(given="Albert", family="Einstein")), Person(email="admin@citrine.io")],
+    references = [Reference(doi="doi", authors=[Name(given="Captain", family="Marvel")])],
+    licenses = [License(url="url")],
+    tags = ["too long", "didn't read"],
+    properties = [
+        Property(name="foo", scalars=[Scalar(value="bar")]),
+        Property(name="spam", scalrs=[Scalar(value="eggs")])
+    ]
+)
 
 
 def test_property_value():
