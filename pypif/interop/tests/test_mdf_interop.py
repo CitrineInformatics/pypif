@@ -1,4 +1,4 @@
-from pypif.obj.common import Property, Scalar, Person, Name, License, Reference
+from pypif.obj.common import Property, Scalar, Person, Name, License, Reference, Value
 from pypif.obj.system import System, ChemicalSystem
 from pypif.interop.mdf import _to_user_defined, _construct_new_key
 
@@ -36,6 +36,16 @@ def test_property_vector():
     sys = System(properties=[Property(name="foo", units="bar", vectors=[[Scalar(value="spam"), Scalar(value="eggs")]])])
     user_data = _to_user_defined(sys)
     assert user_data["foo_bar"] == ["spam", "eggs"] 
+
+
+def test_condition():
+    """Test that conditions are flattened and added"""
+    condition = Value(name="spam", scalars=[Scalar(value="eggs")])
+    sys = System(properties=[
+        Property(name="foo", scalars=[Scalar(value="bar")], conditions=[condition])
+    ])
+    user_data = _to_user_defined(sys)
+    assert user_data["spam"] == "eggs"
 
 
 def test_construct_new_key():
