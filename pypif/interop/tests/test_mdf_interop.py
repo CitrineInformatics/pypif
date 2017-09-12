@@ -1,12 +1,12 @@
 from pypif.obj.common import Property, Scalar, Person, Name, License, Reference, Value
 from pypif.obj.system import System, ChemicalSystem
-from pypif.interop.mdf import _to_user_defined, _construct_new_key
+from pypif.interop.mdf import _to_user_defined, _construct_new_key, _to_meta_data
 
 
 test_pif = ChemicalSystem(
     chemical_formula="CH4",
     names = ["methane", "fart"],
-    contacts = [Person(name=Name(given="Albert", family="Einstein")), Person(email="admin@citrine.io")],
+    contacts = [Person(name=Name(given="Albert", family="Einstein")), Person(name=Name(given="Adam", family="Min"), email="admin@citrine.io")],
     references = [Reference(doi="doi", authors=[Name(given="Captain", family="Marvel")])],
     licenses = [License(url="url")],
     tags = ["too long", "didn't read"],
@@ -54,3 +54,33 @@ def test_construct_new_key():
     assert _construct_new_key("foo", units="bar") == "foo_bar"
     assert _construct_new_key("foo bar") == "foo_bar"
     assert _construct_new_key("#foo", units="g/cm^3") == "_foo_g_cm_3"
+
+
+def test_to_meta_data():
+    meta_data = _to_meta_data(test_pif)
+    assert meta_data == {
+        "title": "methane",
+        "composition": "CH4",
+        "acl": ["public"],
+        "data_contact": [{
+            "given_name": "Albert",
+            "family_name": "Einstein"
+            },{
+            "given_name": "Adam",
+            "family_name": "Min",
+            "email": "admin@citrine.io"
+            }],
+        "data_contributor": [{}],
+        "citation": ["doi"],
+        "author": [{
+            "given_name": "Captain",
+            "family_name": "Marvel"
+            }],
+        "license": "url",
+        "tags": ["too long", "didn't read"],
+        "links": {
+            #landing_page
+            "publication": ["doi"]
+            }
+        }
+
