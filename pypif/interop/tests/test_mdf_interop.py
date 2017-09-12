@@ -1,6 +1,6 @@
 from pypif.obj.common import Property, Scalar
 from pypif.obj.system import System
-from pypif.interop.mdf import * 
+from pypif.interop.mdf import _to_user_defined
 
 
 def test_property_value():
