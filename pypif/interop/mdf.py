@@ -31,12 +31,23 @@ def _to_user_defined(pif):
     return res
 
 
+def _construct_new_key(name, units=None):
+    """Construct an MDF safe key from the name and units"""
+    cat = name
+    if units:
+        cat = "_".join([name, units])
+    to_remove = ["/", "\\", "*", "^", "#", " ", "\n", "\t"]
+    for c in to_remove:
+       cat = cat.replace(c, "_")
+    return cat
+
+
 def _extract_key_value(obj):
     """Extract the value from the object and make a descriptive key"""
 
     # Parse a Value object, which includes Properties
     if isinstance(obj, Value):
-        key = obj.name
+        key = _construct_new_key(obj.name, obj.units)
         value = None
         if obj.scalars and len(obj.scalars) == 1:
             value = obj.scalars[0].value
