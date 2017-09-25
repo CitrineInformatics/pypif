@@ -120,7 +120,7 @@ class Value(Pio):
     @files.setter
     def files(self, files):
         self._validate_list_type('files', files, dict, FileReference)
-        self._files = files
+        self._files = self._get_object(FileReference, files)
 
     @files.deleter
     def files(self):
