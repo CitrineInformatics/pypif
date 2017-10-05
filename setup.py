@@ -8,5 +8,5 @@ setup(name='pypif',
       author_email='kyle@citrine.io',
       packages=find_packages(),
       install_requires=[
-            'six==1.10.0'
+            'six>=1.10.0'
       ])
