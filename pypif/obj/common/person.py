@@ -8,12 +8,13 @@ class Person(Pio):
     Information about a person.
     """
 
-    def __init__(self, name=None, email=None, orcid=None, tags=None, **kwargs):
+    def __init__(self, name=None, email=None, url=None, orcid=None, tags=None, **kwargs):
         """
         Constructor.
 
         :param name: :class: Dictionary or `.Name` object for the person.
         :param email: String with the email address of the person.
+        :param url: String with the url for the person.
         :param orcid: String with the `ORCID <a href="http://orcid.org">ORCID</a>`_ identifier of the person.
         :param tags: List of strings or numbers that are tags for this object.
         :param kwargs: Dictionary of fields that are not supported.
@@ -23,6 +24,8 @@ class Person(Pio):
         self.name = name
         self._email = None
         self.email = email
+        self._url = None
+        self.url = url
         self._orcid = None
         self.orcid = orcid
 
@@ -51,6 +54,19 @@ class Person(Pio):
     @email.deleter
     def email(self):
         self._email = None
+
+    @property
+    def url(self):
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        self._validate_type('url', url, string_types)
+        self._url = url
+
+    @url.deleter
+    def url(self):
+        self._url = None
 
     @property
     def orcid(self):
