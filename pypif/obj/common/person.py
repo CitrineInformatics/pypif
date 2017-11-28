@@ -64,7 +64,7 @@ class Person(Pio):
         self._validate_type('url', url, string_types)
         self._url = url
 
-    @url.delete
+    @url.deleter
     def url(self):
         self._url = None
 
