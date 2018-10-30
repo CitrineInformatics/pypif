@@ -1,4 +1,5 @@
 import json
+import collections
 
 
 class PifEncoder(json.JSONEncoder):
@@ -16,7 +17,7 @@ class PifEncoder(json.JSONEncoder):
         """
         if obj is None:
             return []
-        elif isinstance(obj, list):
+        elif isinstance(obj, collections.Iterable):
             return [i.as_dictionary() for i in obj]
         else:
             return obj.as_dictionary()

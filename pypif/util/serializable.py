@@ -1,3 +1,4 @@
+import collections
 from pypif.util.case import to_camel_case
 from pypif.util.case import keys_to_snake_case
 
@@ -25,12 +26,12 @@ class Serializable(object):
         :param obj: Object to convert to a dictionary.
         :returns: Input object as a dictionary or the original object.
         """
-        if isinstance(obj, list):
+        if isinstance(obj, collections.Iterable) and not isinstance(obj, str):
             return [Serializable._convert_to_dictionary(i) for i in obj]
         elif hasattr(obj, 'as_dictionary'):
             return obj.as_dictionary()
         else:
-            return obj
+            return str(obj)
 
     @staticmethod
     def _get_object(class_, obj):
@@ -41,7 +42,7 @@ class Serializable(object):
         :param obj: Object to process.
         :return: One or more objects.
         """
-        if isinstance(obj, list):
+        if isinstance(obj, collections.Iterable) and not isinstance(obj, str):
             return [Serializable._get_object(class_, i) for i in obj]
         elif isinstance(obj, dict):
             return class_(**keys_to_snake_case(obj))
