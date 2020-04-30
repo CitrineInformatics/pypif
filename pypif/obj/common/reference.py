@@ -104,7 +104,7 @@ class Reference(Pio):
 
     @property
     def issn(self):
-        return self.issn
+        return self._issn
 
     @issn.setter
     def issn(self, issn):
